@@ -5,7 +5,7 @@ import API from '../../utils/API';
 
 function Workout(props) {
 
-    const [listOfExercises, setListOfExercises] = React.useState({})
+    const [listOfExercises, setListOfExercises] = React.useState([])
 
     const getList = () => {
         API.getListOfExercises()
@@ -34,11 +34,18 @@ function Workout(props) {
                         Exercise:
                     </div>
                     <select name="exercises" id="exercises">
-                        {listOfExercises.map((key, index) => {
-                            return (
-                                <option key={index} data-type={key.type} value={key.name}>{key.name}</option>
+                        {listOfExercises ? 
+                            (
+                                listOfExercises.map((key, index) => {
+                                    return (
+                                        <option key={index} data-type={key.type} value={key.name}>{key.name}</option>
+                                    )
+                                })
                             )
-                        })}
+                        :
+                            null
+                        }
+
                     </select>
                 </div>
                 <div className="row section">

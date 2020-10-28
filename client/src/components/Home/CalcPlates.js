@@ -34,7 +34,7 @@ function CalcPlates(props) {
                 Calculate Plates
                 <div className="row">
                     <div className="subtextPlates col-12">
-                        (For barbells)
+                        (For each side of barbell)
                     </div>
                 </div>
             </div>

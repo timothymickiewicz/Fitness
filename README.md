@@ -5,12 +5,14 @@
 <a href="">Code</a>
 <hr>
 <h2>Purpose</h2>
-<hr>
 <p>This application takes daily workout information and turns it into visual and numerical data to assist with bodybuilding routines. Lack of hard data/journaling is a leading cause of plateauing in the gym world, and this application tackles that challenge head-on. Users are able to log their workouts/exercises/sets/reps and have the option of creating their own custom exercises to use in their workouts. The data that is collected is then graphed out for reference to see where your sticking points are, and where you have made progress. A few helpful tools have been added such as a barbell plate calculator, a weekly weight increase estimator, and suggestions based on athletic science and lifting standards. 
 </p>
 <hr>
 <h2>Technologies</h2>
 React, JavaScript, Node, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom
+<br>
+<br>
+(Fully custom CSS, no external styling libraries used aside from Recharts)
 <hr>
 <h2>Contributors</h2>
 <p>Everyone who contributed to the necessary npm packages, and myself.
