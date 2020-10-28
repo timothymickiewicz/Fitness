@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navList {
+    background: rgb(5,244,250);
+    background: linear-gradient(90deg, rgba(5,244,250,1) 0%, rgba(6,147,244,1) 47%, rgba(5,244,250,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+    height: 3rem;
+}
+
+.navItem {
+    flex: 1 0 0;
+    border-right: solid #FFFDD0 2px;
+}
+.navItem:last-child {
+    border-right: none;
+}
+
+.link {
+    text-decoration: none;
+    color: #FFFDD0;
+}
