@@ -10,7 +10,7 @@ import './Navbar.css';
 import Stopwatch from './Timer/Stopwatch';
 import CreateExercise from './CreateExercise/CreateExercise';
 import Workout from './AddWorkout/Workout';
-import Home from './Home';
+import Home from './Home/Home';
 
 const tabs = [
     {name: "Stopwatch"},
