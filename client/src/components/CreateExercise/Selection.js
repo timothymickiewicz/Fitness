@@ -1,6 +1,8 @@
 import React from 'react';
 import './Selection.css';
 
+import API from '../../utils/API';
+
 const exercises = [
     {name: "Bench"},
     {name: "Deadlift"},
@@ -9,29 +11,37 @@ const exercises = [
 
 function Selection(props) {
 
-    function handleBack(event) {
+    const [exerciseName, setExerciseName] = React.useState("");
+
+    const handlePostNewExercise = (value) => {
+        API.createNewExercise({exerciseName: exerciseName, exerciseType: props.type})
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+
+    const handleBack = () => {
         props.onClick();
     }
     
     return (
-        props.selection ?
+        props.type ?
         <div className="row selectionContainer">
             <button className="backBtn" onClick={handleBack}>
                 Back
             </button>
             <div className="col-12 selectionHeader">
-                {props.selection}
+                {props.type}
             </div>
             <div className="row selectionContent">
                 <div className="col-12 sectionHeader">
                     Exercise:
                 </div>
-                <input className="inputBox">
+                <input className="inputBox" onChange={(e) => setExerciseName(e.target.value)}>
 
                 </input>
             </div>
             <hr className="break"></hr>
-            <button className="submitExercise">Submit</button>
+            <button className="submitExercise" onClick={() => handlePostNewExercise()}>Submit</button>
         </div>
         :
         <div></div>

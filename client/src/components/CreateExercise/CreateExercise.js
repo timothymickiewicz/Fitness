@@ -49,7 +49,7 @@ function CreateExercise(props) {
             </div>
             :
             <Selection 
-            selection={selection}
+            type={selection}
             onClick={handleBack} />
     )
 }

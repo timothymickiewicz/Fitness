@@ -1,13 +1,27 @@
 import React from 'react';
 import './Workout.css';
 
-const exercises = [
-    {name: "Bench", type: "Chest"},
-    {name: "Deadlift", type: "Back"},
-    {name: "Squat", type: "Squat"}
-]
+import API from '../../utils/API';
 
 function Workout(props) {
+
+    const [listOfExercises, setListOfExercises] = React.useState({})
+
+    const getList = () => {
+        API.getListOfExercises()
+        .then((res) => {
+            let compactRes = [];
+            res.data.map((key, index) => {
+               return compactRes.push({name: key.exerciseName, type: key.exerciseType});
+            })
+            setListOfExercises(compactRes);
+        })
+        .catch((err) => console.log(err))
+    }
+
+    React.useEffect(() => {
+        getList()
+    }, [])
 
     return (
         <div className="row workoutContainer">
@@ -20,7 +34,7 @@ function Workout(props) {
                         Exercise:
                     </div>
                     <select name="exercises" id="exercises">
-                        {exercises.map((key, index) => {
+                        {listOfExercises.map((key, index) => {
                             return (
                                 <option key={index} data-type={key.type} value={key.name}>{key.name}</option>
                             )
