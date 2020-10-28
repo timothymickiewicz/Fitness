@@ -3,7 +3,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    NavLink
   } from "react-router-dom";  
 import './Navbar.css';
 
@@ -27,16 +27,22 @@ function Navbar(props) {
                     <nav>
                         <ul className="navList">
                             <li key={0} id="home" className="navItem">
-                                <Link to="/" className="link">Home</Link>
+                                <NavLink exact to="/" activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "#3f51b5"
+                                }} className="link">Home</NavLink>
                             </li>
                             {/* Creates li elements for each page */}
                             {
                             tabs.map((key, index) => {
                                 return (
                                     <li key={index} id={key.name} className="navItem">
-                                        <Link to={"/" + key.name} className="link">    
+                                        <NavLink to={"/" + key.name} activeStyle={{
+                                            fontWeight: "bold",
+                                            color: "#3f51b5"
+                                        }} className="link">    
                                             {key.name}
-                                        </Link>
+                                        </NavLink>
                                     </li>
                                 )
                             })
@@ -51,7 +57,7 @@ function Navbar(props) {
                         <Route path={"/Create"} key="2">
                             <CreateExercise />
                         </Route>
-                        <Route path={"/Workout"} key="2">
+                        <Route path={"/Workout"} key="3">
                             <Workout />
                         </Route>
                         <Route path="/" key="0">
