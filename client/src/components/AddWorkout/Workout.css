@@ -1,13 +1,12 @@
 #exercises {
     flex: 0 1 0;
-    margin-left: 1rem;
     margin-bottom: 1rem;
     background-color: #d9d9d9;
     color: #3f51b5;
 }
 
 .workoutHeader {
-    padding-top: 1.5rem;
+    padding-top: 5%;
     font-size: calc(10px + 3vh);
     color: #3f51b5;
 }
@@ -35,13 +34,12 @@
 }
 
 .sectionHeader {
-    flex: 0 1 0;
+    flex: 0 1 auto;
     padding-bottom: 1rem;
 }
 
 .inputBox {
-    flex: 0 1 0;
-    margin-left: 1rem;
+    flex: 1 0 100%;
     margin-bottom: 1rem;
     background-color: #d9d9d9;
     color: #3f51b5;
@@ -77,4 +75,15 @@
     outline: inherit;
     flex: 0 1 80px;
     align-self: center;
+}
+
+.setsField {
+    color: #3f51b5;
+    flex: 0 1 48%;
+}
+
+.inputBoxSetsField {
+    margin-bottom: 1rem;
+    background-color: #d9d9d9;
+    color: #3f51b5;
 }

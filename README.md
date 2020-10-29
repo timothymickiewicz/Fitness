@@ -11,7 +11,7 @@
 </p>
 <hr>
 <h2>Technologies</h2>
-React, JavaScript, Node, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom
+React, JavaScript, Node, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom, UUID
 <br>
 <br>
 (Fully custom CSS, no external styling libraries used aside from Recharts)
@@ -27,7 +27,6 @@ React, JavaScript, Node, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios
 <h5><a href= "mailto:timothy.mickiewicz@gmail.com">@Email</a></h5>       
 <h5><a href= "https://www.linkedin.com/in/timothymickiewicz1995/">@LinkedIn</a></h5>
 <hr>
-
 
 <style type="text/css" rel="stylesheet">
     .flexbox { display: flex; justify-content: space-between }

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const API = {
-  createWorkout: function () {
-    return axios.post("/api/workout/uniqueWorkout")
+  startWorkout: function () {
+    return axios.post("/api/workout/workouts")
   },
   createWorkoutExercise: function () {
     return axios.post("/api/workoutExercises/uniqueWorkoutExercise")

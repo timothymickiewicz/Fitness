@@ -1,47 +1,71 @@
-const Sequelize = require("sequelize");
+const { v4: uuidv4 } = require('uuid');
 
-// Stores individual workouts as unique IDs
 module.exports = function (sequelize, DataTypes) {
-  var Workout = sequelize.define("Workout", {
-    id: {
-      type: DataTypes.INTEGER,
+  // Stores individual workouts as unique IDs with date
+  const Workout = sequelize.define("Workout", {
+    workout_id: {
+      type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true
+      defaultValue: function() {
+        return uuidv4()
+      }
     },
     workout: {
       type: DataTypes.DATE,
       allowNull: false,
-      primaryKey: true
+      defaultValue: function() {
+        return new Date()
+      },
     }
   });
-  var WorkoutExercises = sequelize.define("WorkoutExercises", {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+  // Stores exercises that are attached to a unique workout
+  const WorkoutExercises = sequelize.define("WorkoutExercises", {
+    exercises_id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: function() {
+        return uuidv4()
+      }
     },
     exerciseName: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     exerciseType: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    numOfSets: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     numOfReps: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     breakDuration: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
-//   Linking exercises to their workout for the day
+  // Stores sets and their weights into the exercise they are attached to
+  const Sets = sequelize.define("Sets", {
+    sets_id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: function() {
+        return uuidv4()
+      }
+    },
+    // Stored as string to be evaluated as JSON when returned
+    setValues: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
+  });
 
-//  ***getWorkoutExercises/getWorkout and setWorkoutExercises/setWorkout is now a thing ***
-
-  WorkoutExercises.belongsTo(Workout);
-  Workout.hasMany(WorkoutExercises, {as: 'Workout', foreignKey: 'id'})
-  return [Workout, WorkoutExercises];
+  // Establishing relationships
+  Workout.hasMany(WorkoutExercises);
+  WorkoutExercises.hasMany(Sets)
+  return [Workout, WorkoutExercises, Sets]
 };

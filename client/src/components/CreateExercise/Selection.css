@@ -50,13 +50,13 @@
     margin: 5% 5% 0 5%;
 }
 
-.sectionHeader {
+.selectionSectionHeader {
     flex: 0 1 0;
     padding-bottom: 1rem;
     color: #3f51b5;
 }
 
-.inputBox {
+.selectionInputBox {
     flex: 0 1 0;
     margin-left: 1rem;
     margin-bottom: 1rem;

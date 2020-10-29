@@ -30,3 +30,7 @@
 	font: inherit;
     outline: inherit;
 }
+
+.subtextPlatesComment {
+    font-size: calc(10px + 0.5vh);
+}

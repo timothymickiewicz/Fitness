@@ -33,10 +33,10 @@ function Selection(props) {
                 {props.type}
             </div>
             <div className="row selectionContent">
-                <div className="col-12 sectionHeader">
+                <div className="col-12 selectionSectionHeader">
                     Exercise:
                 </div>
-                <input className="inputBox" onChange={(e) => setExerciseName(e.target.value)}>
+                <input className="selectionInputBox" onChange={(e) => setExerciseName(e.target.value)}>
 
                 </input>
             </div>

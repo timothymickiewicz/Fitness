@@ -35,6 +35,8 @@ function CalcPlates(props) {
                 <div className="row">
                     <div className="subtextPlates col-12">
                         (For each side of barbell)
+                        <br></br>
+                        <span className="subtextPlatesComment">(Barbell is 45 lbs)</span>
                     </div>
                 </div>
             </div>
