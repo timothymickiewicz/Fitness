@@ -5,6 +5,7 @@ module.exports = function (sequelize, DataTypes) {
   const Workout = sequelize.define('Workout', {
     workout_id: {
       type: DataTypes.UUID,
+      primaryKey: true,
       defaultValue: function () {
         return uuidv4();
       },
@@ -13,8 +14,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: function () {
-        let date = new Date();
         // Converting to Nashville time
+        let date = new Date();
         date.setDate(date.getDate() - 1);
         date.setTime(date.getTime() + 19 * 60 * 60 * 1000);
         return date;

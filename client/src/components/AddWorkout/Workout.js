@@ -31,12 +31,17 @@ function Workout(props) {
 
   //   Submits the workout, returns UUID of workout, uses to insert the rest of the data.
   const handleSubmitWorkout = () => {
+    console.log(exerciseName);
+    console.log(exerciseType);
+    console.log(parseInt(sets));
+    console.log(parseInt(duration));
+    console.log(workoutUUID);
     API.createWorkoutExercise({
-      WorkoutWorkoutId: workoutUUID,
       exerciseName: exerciseName,
       exerciseType: exerciseType,
-      numOfSets: sets,
-      breakDuration: duration,
+      numOfSets: parseInt(sets),
+      breakDuration: parseInt(duration),
+      WorkoutWorkoutId: workoutUUID,
     }).then(res => {
       console.log(res);
     });
@@ -55,10 +60,11 @@ function Workout(props) {
               className='inputBoxSetsField'></input>
           </div>
           <div className='subSetsField'>
-            Set {i} Weight (lbs):
+            Set {i} Weight:
             <input
               id={'setsFieldWeight' + i}
-              className='inputBoxSetsField'></input>
+              className='inputBoxSetsField'
+              placeholder='Enter as lbs'></input>
           </div>
         </div>
       );
@@ -95,13 +101,16 @@ function Workout(props) {
           id='continue'
           className='introBtn'
           onClick={() => {
-            API.getLastWorkout().then(res => {
-              console.log('old');
-              console.log(res);
-              setWorkoutUUID(res.data.workout_id);
-              $('.openingContainer').css('display', 'none');
-              $('.content').css('display', 'flex');
-            });
+            API.getLastWorkout()
+              .then(res => {
+                console.log('old');
+                console.log(res);
+                setWorkoutUUID(res.data.workout_id);
+                $('.openingContainer').css('display', 'none');
+                $('.content').css('display', 'flex');
+              })
+              // Will create an alert at top level that takes over the center of the viewport to say nothing exists
+              .catch(err => alert('no previous workout'));
           }}>
           Continue
         </button>
@@ -120,22 +129,25 @@ function Workout(props) {
           New
         </button>
       </div>
-
       <div className='row content'>
         <div className='row section'>
           <div className='col-12 sectionHeader'>Exercise:</div>
-          <select name='exercises' id='exercises'>
+          <select
+            onChange={e => {
+              setExerciseName(e.target.value);
+              setExerciseType(
+                e.target.options[e.target.selectedIndex].dataset.type
+              );
+            }}
+            name='exercises'
+            id='exercises'>
+            <option key={0} data-type={'empty'} defaultValue='Select an Option'>
+              Select an Option
+            </option>
             {listOfExercises.join() !== '' ? (
               listOfExercises.map((key, index) => {
                 return (
-                  <option
-                    onChange={() => {
-                      setExerciseName(key.name);
-                      setExerciseType(key.type);
-                    }}
-                    key={index}
-                    data-type={key.type}
-                    value={key.name}>
+                  <option key={index} data-type={key.type} value={key.name}>
                     {key.name}
                   </option>
                 );
@@ -175,7 +187,7 @@ function Workout(props) {
           className='submitWorkout'
           onClick={() => {
             handleSetWeights();
-            //   handleSubmitWorkout();
+            handleSubmitWorkout();
           }}>
           Submit
         </button>

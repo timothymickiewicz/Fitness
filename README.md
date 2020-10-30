@@ -1,10 +1,7 @@
 <h1>Personal Fitness</h1>
 <p>Fitness App</p>
-<div class="flexbox">
-    <a href="" class="live">Live-link</a>
-    <br>
-    <a href="" class="code">Code</a>
-</div>
+<a align="right" href="" class="live">(Live-link)</a>
+<a align="left" href="" class="code">(Code)</a>
 <hr>
 <h2>Purpose</h2>
 <p>This application takes daily workout information and turns it into visual and numerical data to assist with bodybuilding routines. Lack of hard data/journaling is a leading cause of plateauing in the gym world, and this application tackles that challenge head-on. Users are able to log their workouts/exercises/sets/reps and have the option of creating their own custom exercises to use in their workouts. The data that is collected is then graphed out for reference to see where your sticking points are, and where you have made progress. A few helpful tools have been added such as a barbell plate calculator, a weekly weight increase estimator, and suggestions based on athletic science and lifting standards. 
@@ -30,7 +27,3 @@
 <h5><a href= "mailto:timothy.mickiewicz@gmail.com">@Email</a></h5>       
 <h5><a href= "https://www.linkedin.com/in/timothymickiewicz1995/">@LinkedIn</a></h5>
 <hr>
-
-<style type="text/css" rel="stylesheet">
-    .flexbox { display: flex; justify-content: space-between }
-</style>

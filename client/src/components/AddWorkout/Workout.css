@@ -91,7 +91,7 @@
 }
 
 .subSetsField {
-  flex: 0 1 50%;
+  flex: 0 1 48%;
 }
 
 .inputBoxSetsField {
@@ -103,8 +103,8 @@
 .setsFieldContainer {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-content: center;
+  justify-content: space-evenly;
+  align-content: flex-start;
   flex-flow: wrap;
 }
 

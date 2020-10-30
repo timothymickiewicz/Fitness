@@ -4,8 +4,11 @@ const API = {
   startWorkout: function () {
     return axios.post('/api/workout/workouts');
   },
-  createWorkoutExercise: function () {
-    return axios.post('/api/workoutExercises/workoutExercise');
+  createWorkoutExercise: function (newWorkoutExercise) {
+    return axios.post(
+      '/api/workoutExercises/workoutExercise',
+      newWorkoutExercise
+    );
   },
   createNewExercise: function (newExercise) {
     return axios.post('/api/storedExercises/exercises', newExercise);

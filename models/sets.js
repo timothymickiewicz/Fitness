@@ -5,6 +5,7 @@ module.exports = function (sequelize, DataTypes) {
   const Sets = sequelize.define('Sets', {
     sets_id: {
       type: DataTypes.UUID,
+      primaryKey: true,
       defaultValue: function () {
         return uuidv4();
       },

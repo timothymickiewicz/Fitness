@@ -5,8 +5,8 @@ const Sets = db.Sets;
 const Exercises = db.Exercises;
 
 // Making relationships
-Workout.hasMany(WorkoutExercises);
-WorkoutExercises.hasMany(Sets);
+Workout.hasMany(WorkoutExercises, { as: 'WorkoutExercises' });
+WorkoutExercises.hasMany(Sets, { as: 'ExerciseSets' });
 
 module.exports = {
   startWorkout: function (req, res) {
@@ -50,7 +50,7 @@ module.exports = {
   findLastWorkout: function (req, res) {
     Workout.findOne({
       limit: 1,
-      order: [['id', 'DESC']],
+      order: [['createdAt', 'DESC']],
     })
       .then(lastEntry => {
         console.log(lastEntry);
@@ -63,11 +63,18 @@ module.exports = {
   },
   createWorkoutExercise: function (req, res) {
     console.log(req.body);
-    WorkoutExercises.create(req.body)
-      .then(workoutExercise => res.json(workoutExercise))
+    WorkoutExercises.create({
+      exerciseName: req.body.exerciseName,
+      exerciseType: req.body.exerciseType,
+      numOfSets: req.body.numOfSets,
+      breakDuration: req.body.breakDuration,
+      WorkoutWorkoutId: req.body.WorkoutWorkoutId,
+    })
+      .then(workoutExercise => res.status(200).send(workoutExercise))
       .catch(err => res.status(422).json(err));
   },
   createExercise: function (req, res) {
+    console.log(req.body);
     Exercises.create(req.body)
       .then(exercise => res.status(200).send(exercise))
       .catch(err => res.status(422).send(err));
