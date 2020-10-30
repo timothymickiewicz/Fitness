@@ -1,4 +1,3 @@
-import { toNamespacedPath } from 'path';
 import React from 'react';
 import './CalcWeightField.css';
 

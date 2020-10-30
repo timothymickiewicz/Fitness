@@ -3,7 +3,6 @@ const Workout = db.undefined[0];
 const WorkoutExercises = db.undefined[1];
 const Sets = db.undefined[2];
 const Exercises = db.Exercises;
-
 // const Workout = sequelize.define("Workout", {
 //   workout_id: {
 //     type: DataTypes.INTEGER,
@@ -98,32 +97,22 @@ module.exports = {
       });
   },
   findLastWorkout: function (req, res) {
-    console.log(req);
-    db.workoutExercises
-      .findAll({
-        where: {
-          WorkoutId: req.body.WorkoutId,
-        },
-        order: [['WorkoutId', 'DESC']],
-      })
+    Workout.findOne({
+      limit: 1,
+      order: [['id', 'DESC']],
+    })
       .then(lastEntry => {
-        res.json(lastEntry);
         console.log(lastEntry);
+        res.json(lastEntry);
       })
       .catch(err => {
         res.status(422).json(err);
         console.log(err);
       });
   },
-  createWorkout: function (req, res) {
-    console.log(req, res);
-    db.Workout.create(req.body)
-      .then(workout => res.json(workout))
-      .catch(err => res.status(422).json(err));
-  },
   createWorkoutExercise: function (req, res) {
-    console.log(req);
-    db.WorkoutExercises.create(req.body)
+    console.log(req.body);
+    WorkoutExercises.create(req.body)
       .then(workoutExercise => res.json(workoutExercise))
       .catch(err => res.status(422).json(err));
   },

@@ -20,6 +20,10 @@
 .content {
   text-align: left;
   margin: 0 5% 0 5%;
+  display: none;
+  justify-content: flex-start;
+  align-content: left;
+  flex-flow: column;
 }
 
 .section {
@@ -73,17 +77,57 @@
   padding: 0;
   font: inherit;
   outline: inherit;
-  flex: 0 1 80px;
+  flex: 0 1 calc(25px + 1vh);
   align-self: center;
 }
 
 .setsField {
   color: #3f51b5;
-  flex: 0 1 48%;
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-flow: wrap;
+}
+
+.subSetsField {
+  flex: 0 1 50%;
 }
 
 .inputBoxSetsField {
   margin-bottom: 1rem;
   background-color: #d9d9d9;
   color: #3f51b5;
+}
+
+.setsFieldContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-flow: wrap;
+}
+
+.introBtn {
+  color: #3f51b5 !important;
+  background-color: #d9d9d9 !important;
+  width: 80px;
+  cursor: pointer;
+  box-shadow: #3f51b5 0 0 5px;
+  background: none;
+  border: #3f51b5 solid 1px;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  height: 10vw;
+  flex: 0 1 100%;
+  margin: 5%;
+  font-size: calc(10px + 2vh);
+}
+
+.openingContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-content: space-between;
+  flex-flow: wrap;
 }

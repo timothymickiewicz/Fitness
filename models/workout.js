@@ -5,7 +5,6 @@ module.exports = function (sequelize, DataTypes) {
   const Workout = sequelize.define('Workout', {
     workout_id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: function () {
         return uuidv4();
       },
@@ -14,7 +13,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: function () {
-        return new Date();
+        let date = new Date();
+        // Converting to Nashville time
+        date.setDate(date.getDate() - 1);
+        date.setTime(date.getTime() + 19 * 60 * 60 * 1000);
+        return date;
       },
     },
   });
@@ -22,7 +25,6 @@ module.exports = function (sequelize, DataTypes) {
   const WorkoutExercises = sequelize.define('WorkoutExercises', {
     exercises_id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: function () {
         return uuidv4();
       },
@@ -39,12 +41,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    numOfReps: {
+    breakDuration: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    breakDuration: {
-      type: DataTypes.INTEGER,
+    WorkoutWorkoutId: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
   });
@@ -52,7 +54,6 @@ module.exports = function (sequelize, DataTypes) {
   const Sets = sequelize.define('Sets', {
     sets_id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: function () {
         return uuidv4();
       },

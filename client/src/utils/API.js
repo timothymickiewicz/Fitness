@@ -5,18 +5,16 @@ const API = {
     return axios.post('/api/workout/workouts');
   },
   createWorkoutExercise: function () {
-    return axios.post('/api/workoutExercises/uniqueWorkoutExercise');
+    return axios.post('/api/workoutExercises/workoutExercise');
   },
   createNewExercise: function (newExercise) {
-    return axios
-      .post('/api/storedExercises/exercises', newExercise)
-      .then(() => console.log(newExercise));
+    return axios.post('/api/storedExercises/exercises', newExercise);
   },
   getLastExercise: function () {
-    return axios.get('/api/workoutExercises/uniqueWorkoutExercise');
+    return axios.get('/api/workoutExercises/workoutExercise');
   },
   getLastWorkout: function () {
-    return axios.get('/api/workout/uniqueWorkout');
+    return axios.get('/api/lastWorkout/last');
   },
   getListOfExercises: function () {
     return axios.get('/api/storedExercises/exercises');
