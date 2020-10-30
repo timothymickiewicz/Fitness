@@ -1,28 +1,28 @@
 .exerciseContainer {
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-flow: wrap;
-    text-align: center;
-    height: 50%;
-    width: auto;
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-flow: wrap;
+  text-align: center;
+  height: 50%;
+  width: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .iconWrap {
-    flex: 1 0 40%;
-    border: 0; 
-    background: transparent;
-    height: auto;
-    margin-top: 10%;
+  flex: 1 0 40%;
+  border: 0;
+  background: transparent;
+  height: auto;
+  margin-top: 10%;
 }
 
 .iconItem {
-    height: calc(70px + 3.5vh);
-    width: auto;
+  height: calc(70px + 3.5vh);
+  width: auto;
 }

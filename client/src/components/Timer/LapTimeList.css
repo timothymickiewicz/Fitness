@@ -1,27 +1,27 @@
 .LapTimeList__list {
-    list-style: none;
-    padding: 0px;
-    margin: 15px auto;
-    color: #d9d9d9;
-    font-family: 'Roboto Mono', monospace;
-    font-size: calc(15px + 1vh)
+  list-style: none;
+  padding: 0px;
+  margin: 15px auto;
+  color: #d9d9d9;
+  font-family: 'Roboto Mono', monospace;
+  font-size: calc(15px + 1vh);
 }
-  
+
 .LapTimeList__listwrap {
-    max-width: 270px;
-    margin: 0 auto;
+  max-width: 270px;
+  margin: 0 auto;
 }
-  
+
 .LapTimeList__headers {
-    width: 100%;
-    color: #d9d9d9;
-    font-family: 'Roboto Mono', monospace;
-    font-size: calc(15px + 2vh)
+  width: 100%;
+  color: #d9d9d9;
+  font-family: 'Roboto Mono', monospace;
+  font-size: calc(15px + 2vh);
 }
-  
+
 .LapTimeList__headers span {
-    width: 50%;
-    font-weight: bold;
-    text-align: center;
-    float: left;
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  float: left;
 }

@@ -68,6 +68,6 @@
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "*.{js,css,md}": "prettier --write"
   }
 }

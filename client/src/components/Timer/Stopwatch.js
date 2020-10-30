@@ -11,13 +11,12 @@ function getDefaultState() {
   return {
     isRunning: false,
     time: 0,
-    timeList: []    
-  }
+    timeList: [],
+  };
 }
 
 class Stopwatch extends Component {
-
-  constructor( props ) {
+  constructor(props) {
     super(props);
     this.state = getDefaultState();
     this.timerRef = null;
@@ -25,25 +24,31 @@ class Stopwatch extends Component {
 
   updateTimer(extraTime) {
     const { time } = this.state;
-    this.setState({ time : time + extraTime });
+    this.setState({ time: time + extraTime });
   }
 
   start() {
-    this.setState({
-      isRunning : true 
-    }, () => {
-      this.timerRef = setInterval(
-        () => { this.updateTimer( Config.updateInterval ) }, Config.updateInterval
-      )
-    });
+    this.setState(
+      {
+        isRunning: true,
+      },
+      () => {
+        this.timerRef = setInterval(() => {
+          this.updateTimer(Config.updateInterval);
+        }, Config.updateInterval);
+      }
+    );
   }
 
   stop() {
-    this.setState({
-      isRunning : false 
-    }, () => {
-      clearInterval(this.timerRef);
-    });
+    this.setState(
+      {
+        isRunning: false,
+      },
+      () => {
+        clearInterval(this.timerRef);
+      }
+    );
   }
 
   reset() {
@@ -54,28 +59,26 @@ class Stopwatch extends Component {
     const { time, timeList } = this.state;
 
     this.setState({
-      timeList : [ ...timeList, time ] 
+      timeList: [...timeList, time],
     });
   }
 
   render() {
-
     const { isRunning, time, timeList } = this.state;
 
     return (
-      <div className="Stopwatch">
-
-        <Timer time={ time } />
+      <div className='Stopwatch'>
+        <Timer time={time} />
 
         <Controls
-          isRunning={ isRunning } 
-          start={ () => this.start() }
-          stop={ () => this.stop() }
-          reset={ () => this.reset() }
-          addLapTime={ () => this.addLapTime() }
+          isRunning={isRunning}
+          start={() => this.start()}
+          stop={() => this.stop()}
+          reset={() => this.reset()}
+          addLapTime={() => this.addLapTime()}
         />
 
-        <LapTimeList timeList={ timeList } />
+        <LapTimeList timeList={timeList} />
       </div>
     );
   }

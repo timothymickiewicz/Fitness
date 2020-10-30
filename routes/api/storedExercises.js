@@ -1,8 +1,9 @@
-const router = require("express").Router();
-const workoutController = require("../../controllers/workoutController");
+const router = require('express').Router();
+const workoutController = require('../../controllers/workoutController');
 
-router.route("/exercises")
+router
+  .route('/exercises')
   .get(workoutController.getAllExercises)
-  .post(workoutController.createExercise)
-  
+  .post(workoutController.createExercise);
+
 module.exports = router;
