@@ -11,13 +11,16 @@
 </p>
 <hr>
 <h2>Technologies</h2>
-React, JavaScript, Node, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom, UUID
+<p>React, JavaScript, Node, jQuery, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom, UUID, Prettier, Lint-Staged</p>
 <br>
 <br>
 (Fully custom CSS, no external styling libraries used aside from Recharts)
 <hr>
+<h2>Skills</h2>
+<p>ORM, Predictive Calculations, Data Visualization, Mobile First Design, PWA Development</p>
+<hr>
 <h2>Contributors</h2>
-<p>Everyone who contributed to the necessary npm packages, and myself.
+<p>Everyone who contributed to create the necessary NPM packages, and myself.
 <hr>
 <h2>Contact</h2>
 <h3>Timothy Mickiewicz</h3>
