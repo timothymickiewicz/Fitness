@@ -1,9 +1,9 @@
 import React from 'react';
 import './Selection.css';
 
-import API from '../../utils/API';
+import $ from 'jquery';
 
-const exercises = [{ name: 'Bench' }, { name: 'Deadlift' }, { name: 'Squat' }];
+import API from '../../utils/API';
 
 function Selection(props) {
   const [exerciseName, setExerciseName] = React.useState('');
@@ -36,7 +36,10 @@ function Selection(props) {
       <hr className='break'></hr>
       <button
         className='submitExercise'
-        onClick={() => handlePostNewExercise()}>
+        onClick={() => {
+          handlePostNewExercise();
+          $('.selectionInputBox').val('');
+        }}>
         Submit
       </button>
     </div>

@@ -1,61 +1,12 @@
 const db = require('../models');
-const Workout = db.undefined[0];
-const WorkoutExercises = db.undefined[1];
-const Sets = db.undefined[2];
+const Workout = db.Workout;
+const WorkoutExercises = db.WorkoutExercises;
+const Sets = db.Sets;
 const Exercises = db.Exercises;
-// const Workout = sequelize.define("Workout", {
-//   workout_id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     autoIncrement: true
-//   },
-//   workout: {
-//     type: DataTypes.DATE,
-//     allowNull: false,
-//     primaryKey: true
-//   }
-// });
 
-// const Exercises = sequelize.define("Exercises", {
-//   exercises_id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     autoIncrement: true
-//   },
-//   exerciseName: {
-//     type: DataTypes.STRING,
-//     allowNull: false,
-//   },
-//   exerciseType: {
-//     type: DataTypes.STRING,
-//     allowNull: false
-//   },
-//   numOfSets: {
-//     type: DataTypes.INTEGER,
-//     allowNull: false
-//   },
-//   numOfReps: {
-//     type: DataTypes.INTEGER,
-//     allowNull: false
-//   },
-//   breakDuration: {
-//     type: DataTypes.INTEGER,
-//     allowNull: false
-//   }
-// });
-
-// const Sets = sequelize.define("Sets", {
-//   sets_id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true,
-//     autoIncrement: true
-//   },
-//   // Stored as string to be evaluated as JSON when returned
-//   setValues: {
-//     type: DataTypes.STRING,
-//     allowNull: false,
-//   }
-// });
+// Making relationships
+Workout.hasMany(WorkoutExercises);
+WorkoutExercises.hasMany(Sets);
 
 module.exports = {
   startWorkout: function (req, res) {

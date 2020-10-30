@@ -4,7 +4,6 @@ import './Workout.css';
 import $ from 'jquery';
 
 import API from '../../utils/API';
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
 
 function Workout(props) {
   //   Pulled from the exercises table
