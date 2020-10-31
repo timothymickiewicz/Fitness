@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
       },
     },
     // Stored as string to be evaluated as JSON when returned
-    setValues: {
+    setWeights: {
       type: DataTypes.STRING,
       allowNull: false,
     },

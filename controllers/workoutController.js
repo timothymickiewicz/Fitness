@@ -79,4 +79,10 @@ module.exports = {
       .then(exercise => res.status(200).send(exercise))
       .catch(err => res.status(422).send(err));
   },
+  addSetWeights: function (req, res) {
+    console.log(req.body);
+    Sets.create(req.body)
+      .then(exercise => res.status(200).send(exercise))
+      .catch(err => res.status(422).send(err));
+  },
 };

@@ -22,6 +22,9 @@ const API = {
   getListOfExercises: function () {
     return axios.get('/api/storedExercises/exercises');
   },
+  addSetWeights: function (setWeights) {
+    return axios.post('/api/sets/setWeights', setWeights);
+  },
 };
 
 export default API;

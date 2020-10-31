@@ -29,13 +29,9 @@ function Workout(props) {
     }
   };
 
-  //   Submits the workout, returns UUID of workout, uses to insert the rest of the data.
+  //   Submits the workout, returns UUID of workoutExercise to post the set data
   const handleSubmitWorkout = () => {
-    console.log(exerciseName);
-    console.log(exerciseType);
-    console.log(parseInt(sets));
-    console.log(parseInt(duration));
-    console.log(workoutUUID);
+    console.log(setWeights);
     API.createWorkoutExercise({
       exerciseName: exerciseName,
       exerciseType: exerciseType,
@@ -43,7 +39,12 @@ function Workout(props) {
       breakDuration: parseInt(duration),
       WorkoutWorkoutId: workoutUUID,
     }).then(res => {
-      console.log(res);
+      API.addSetWeights({
+        setWeights: setWeights,
+        WorkoutExerciseExercisesId: res.data.exercises_id,
+      }).then(res2 => {
+        console.log(res2);
+      });
     });
   };
 
