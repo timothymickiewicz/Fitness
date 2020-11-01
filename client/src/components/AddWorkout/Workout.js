@@ -31,7 +31,6 @@ function Workout(props) {
 
   //   Submits the workout, returns UUID of workoutExercise to post the set data
   const handleSubmitWorkout = () => {
-    console.log(setWeights);
     API.createWorkoutExercise({
       exerciseName: exerciseName,
       exerciseType: exerciseType,
