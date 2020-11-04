@@ -4,17 +4,6 @@
   margin: 5%;
 }
 
-.chart {
-  margin-top: 1rem;
-}
-
-.statsHeader {
-  font-size: calc(10px + 3vh);
-  color: #3f51b5;
-  border-bottom: solid #3f51b5 2px;
-  border-top: solid #3f51b5 2px;
-}
-
 .subtextPlates {
   font-size: calc(10px + 1vh);
 }

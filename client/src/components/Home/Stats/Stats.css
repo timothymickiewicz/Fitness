@@ -1,0 +1,15 @@
+.chart {
+  margin-top: 1rem;
+}
+
+.statsContainer {
+  height: auto;
+  width: calc(100vw - 10%);
+}
+
+.statsHeader {
+  font-size: calc(10px + 3vh);
+  color: #3f51b5;
+  border-bottom: solid #3f51b5 2px;
+  border-top: solid #3f51b5 2px;
+}
