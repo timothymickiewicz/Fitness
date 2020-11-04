@@ -14,14 +14,14 @@ function Home(props) {
 
   React.useEffect(() => {}, [props.listOfExercises]);
 
-  const setChartDataOnMount = resData => {
-    resData.map((set, index) => {
+  const setChartDataOnRes = resData => {
+    resData.forEach((set, index) => {
       let iterableSets = JSON.parse(`[${set.setWeights.replace(/,\s*$/, '')}]`);
       setChartData(chartData => [
         ...chartData,
         {
           name: set.createdAt,
-          weight: CalcMax({ setWeights: iterableSets }).toFixed(0),
+          uv: CalcMax({ setWeights: iterableSets }).toFixed(0),
         },
       ]);
     });
@@ -33,16 +33,12 @@ function Home(props) {
     })
       .then(res => {
         setData(res.data);
-        setChartDataOnMount(res.data);
+        setChartDataOnRes(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   };
-
-  // const handleSetQuery = input => {
-  //   setQuery(input);
-  // };
 
   return (
     <div className='row homeContainer'>
@@ -50,7 +46,7 @@ function Home(props) {
         setChart={sendDataRequest}
         listOfExercises={props.listOfExercises}
       />
-      <Stats data={data} />
+      <Stats data={chartData} />
       <CalcPlates />
     </div>
   );

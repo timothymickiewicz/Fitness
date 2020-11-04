@@ -16,6 +16,8 @@ function Workout(props) {
   //   Posts to the sets table, relates to workoutExercises entry
   let [setWeights, setSetWeights] = React.useState('');
 
+  React.useEffect(() => {}, [props.listOfExercises]);
+
   //   Sets the form data to state
   const handleSetWeights = () => {
     for (let i = 1; i <= sets; i++) {

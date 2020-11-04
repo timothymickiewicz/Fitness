@@ -13,7 +13,10 @@ function Selection(props) {
       exerciseName: exerciseName,
       exerciseType: props.type,
     })
-      .then(res => console.log(res))
+      .then(res => {
+        props.getList();
+        console.log(res);
+      })
       .catch(err => console.log(err));
   };
 

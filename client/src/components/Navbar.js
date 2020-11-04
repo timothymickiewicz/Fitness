@@ -81,7 +81,7 @@ function Navbar(props) {
               <Stopwatch />
             </Route>
             <Route path={'/Create'} key='2'>
-              <CreateExercise />
+              <CreateExercise getList={getList} />
             </Route>
             <Route path={'/Workout'} key='3'>
               <Workout listOfExercises={listOfExercises} />

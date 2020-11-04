@@ -35,7 +35,9 @@ let maxCalcNums = [
 // simply add asyn before setweights () to make promise return on whatever page uses these
 export const CalcMax = ({ setWeights }) => {
   let highestMax = 0;
+  console.log(setWeights);
   setWeights.forEach((set, index) => {
+    console.log(set);
     let percent = maxCalcNums.find(key => key.reps === set.reps).percent;
     let max = set.weight / percent;
     if (max > highestMax) {
