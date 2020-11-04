@@ -20,9 +20,9 @@ function Workout(props) {
   const handleSetWeights = () => {
     for (let i = 1; i <= sets; i++) {
       setSetWeights(
-        (setWeights += `{"Set${i}":{"Reps": ${$(
+        (setWeights += `{"reps": ${$(
           '#setsFieldReps' + i
-        ).val()}, "Weight": ${$('#setsFieldWeight' + i).val()}}},`)
+        ).val()}, "weight": ${$('#setsFieldWeight' + i).val()}},`)
       );
     }
   };

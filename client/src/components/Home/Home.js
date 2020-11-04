@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 
 import API from '../../utils/API';
+import { CalcMax } from '../../utils/Calc';
 
 import Stats from './Stats/Stats';
 import Search from './Stats/Search';
@@ -9,43 +10,46 @@ import CalcPlates from './CalcPlates';
 
 function Home(props) {
   const [data, setData] = React.useState([]);
-  const [query, setQuery] = React.useState('');
+  const [chartData, setChartData] = React.useState([]);
 
-  React.useEffect(() => {}, [props.listOfExercises, query]);
+  React.useEffect(() => {}, [props.listOfExercises]);
 
-  const sendDataRequest = () => {
+  const setChartDataOnMount = resData => {
+    resData.map((set, index) => {
+      let iterableSets = JSON.parse(`[${set.setWeights.replace(/,\s*$/, '')}]`);
+      setChartData(chartData => [
+        ...chartData,
+        {
+          name: set.createdAt,
+          weight: CalcMax({ setWeights: iterableSets }).toFixed(0),
+        },
+      ]);
+    });
+  };
+
+  const sendDataRequest = val => {
     API.getAllByYear({
-      exerciseName: query,
+      exerciseName: val,
     })
       .then(res => {
         setData(res.data);
+        setChartDataOnMount(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  const handleSetQuery = input => {
-    setQuery(input);
-  };
+  // const handleSetQuery = input => {
+  //   setQuery(input);
+  // };
 
   return (
     <div className='row homeContainer'>
       <Search
-        setInput={handleSetQuery}
+        setChart={sendDataRequest}
         listOfExercises={props.listOfExercises}
       />
-      <div className='row'>
-        <div className='col-12'>
-          <button
-            className='submitWeightCheck'
-            onClick={() => {
-              sendDataRequest();
-            }}>
-            Calculate
-          </button>
-        </div>
-      </div>
       <Stats data={data} />
       <CalcPlates />
     </div>

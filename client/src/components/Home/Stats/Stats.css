@@ -3,7 +3,8 @@
 }
 
 .statsContainer {
-  height: auto;
+  /* 210 for graph height + 10px, 14px + 3vh for header, 1rem for chart wrapper */
+  height: calc(210px + 1rem);
   width: calc(100vw - 10%);
 }
 

@@ -4,8 +4,8 @@ import './Search.css';
 function Search(props) {
   React.useEffect(() => {});
 
-  const handleSetQuery = e => {
-    props.setInput(e);
+  const handleSetQuery = val => {
+    props.setChart(val);
   };
 
   return (
