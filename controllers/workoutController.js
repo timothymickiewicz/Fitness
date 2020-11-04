@@ -6,7 +6,7 @@ const Exercises = db.Exercises;
 
 // Making relationships
 Workout.hasMany(WorkoutExercises, { as: 'WorkoutExercises' });
-WorkoutExercises.hasMany(Sets, { as: 'ExerciseSets' });
+// WorkoutExercises.hasMany(Sets, { as: 'ExerciseSets' });
 
 module.exports = {
   startWorkout: function (req, res) {
@@ -68,6 +68,7 @@ module.exports = {
       exerciseType: req.body.exerciseType,
       numOfSets: req.body.numOfSets,
       breakDuration: req.body.breakDuration,
+      setWeights: req.body.setWeights,
       WorkoutWorkoutId: req.body.WorkoutWorkoutId,
     })
       .then(workoutExercise => res.status(200).send(workoutExercise))
@@ -79,10 +80,27 @@ module.exports = {
       .then(exercise => res.status(200).send(exercise))
       .catch(err => res.status(422).send(err));
   },
-  addSetWeights: function (req, res) {
+  // addSetWeights: function (req, res) {
+  //   console.log(req.body);
+  //   WorkoutExercises.create(req.body)
+  //     .then(exercise => res.status(200).send(exercise))
+  //     .catch(err => res.status(422).send(err));
+  // },
+  getAllByYear: function (req, res) {
     console.log(req.body);
-    Sets.create(req.body)
-      .then(exercise => res.status(200).send(exercise))
-      .catch(err => res.status(422).send(err));
+    WorkoutExercises.findAll({
+      where: {
+        exerciseName: req.body.exerciseName,
+      },
+      order: [['createdAt', 'DESC']],
+    })
+      .then(data => {
+        console.log(data);
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(422).json(err);
+        console.log(err);
+      });
   },
 };

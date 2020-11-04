@@ -11,6 +11,16 @@ const data = [
 ];
 
 function Stats(props) {
+  React.useEffect(() => {
+    // props.data.map((set, index) => {
+    //   console.log(JSON.parse(`[${set.setWeights.replace(/,\s*$/, "")}]`))
+    // })
+    // These two lines parse the set data into an object, logs
+    // let weights = props.data[0].setWeights.replace(/,\s*$/, "")
+    // let toParse = `[${weights}]`
+    // console.log(JSON.parse(toParse))
+  });
+
   return (
     <div className='row statsContainer'>
       <div className='statsHeader col-12'>Stats</div>

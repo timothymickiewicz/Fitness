@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import './Navbar.css';
 
+import API from '../utils/API';
+
 import Stopwatch from './Timer/Stopwatch';
 import CreateExercise from './CreateExercise/CreateExercise';
 import Workout from './AddWorkout/Workout';
@@ -15,6 +17,28 @@ import Home from './Home/Home';
 const tabs = [{ name: 'Stopwatch' }, { name: 'Create' }, { name: 'Workout' }];
 
 function Navbar(props) {
+  const [listOfExercises, setListOfExercises] = React.useState([]);
+
+  //   Populates the dropdown
+  const getList = () => {
+    API.getListOfExercises()
+      .then(res => {
+        let compactRes = [];
+        res.data.map((key, index) => {
+          return compactRes.push({
+            name: key.exerciseName,
+            type: key.exerciseType,
+          });
+        });
+        setListOfExercises(compactRes);
+      })
+      .catch(err => console.log(err));
+  };
+
+  React.useEffect(() => {
+    getList();
+  }, []);
+
   return (
     <Router>
       <div className='row'>
@@ -60,10 +84,10 @@ function Navbar(props) {
               <CreateExercise />
             </Route>
             <Route path={'/Workout'} key='3'>
-              <Workout />
+              <Workout listOfExercises={listOfExercises} />
             </Route>
             <Route path='/' key='0'>
-              <Home />
+              <Home listOfExercises={listOfExercises} />
             </Route>
           </Switch>
         </div>

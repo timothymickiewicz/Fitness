@@ -31,6 +31,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       not: ['[a-z]', 'i'], // will not allow letters
     },
+    setWeights: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 
   return WorkoutExercises;

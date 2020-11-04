@@ -6,8 +6,6 @@ import $ from 'jquery';
 import API from '../../utils/API';
 
 function Workout(props) {
-  //   Pulled from the exercises table
-  const [listOfExercises, setListOfExercises] = React.useState([]);
   //   Pulled from the workout table
   const [workoutUUID, setWorkoutUUID] = React.useState('');
   //   Posts to the workoutExercises table, relates to workout entry
@@ -22,9 +20,9 @@ function Workout(props) {
   const handleSetWeights = () => {
     for (let i = 1; i <= sets; i++) {
       setSetWeights(
-        (setWeights += `{Set${i}:{Reps: ${$(
+        (setWeights += `{"Set${i}":{"Reps": ${$(
           '#setsFieldReps' + i
-        ).val()}},{Weight: ${$('#setsFieldWeight' + i).val()}}},`)
+        ).val()}, "Weight": ${$('#setsFieldWeight' + i).val()}}},`)
       );
     }
   };
@@ -36,14 +34,10 @@ function Workout(props) {
       exerciseType: exerciseType,
       numOfSets: parseInt(sets),
       breakDuration: parseInt(duration),
+      setWeights: setWeights,
       WorkoutWorkoutId: workoutUUID,
     }).then(res => {
-      API.addSetWeights({
-        setWeights: setWeights,
-        WorkoutExerciseExercisesId: res.data.exercises_id,
-      }).then(res2 => {
-        console.log(res2);
-      });
+      console.log(res);
     });
   };
 
@@ -72,26 +66,6 @@ function Workout(props) {
     return setsField;
   };
 
-  //   Populates the dropdown
-  const getList = () => {
-    API.getListOfExercises()
-      .then(res => {
-        let compactRes = [];
-        res.data.map((key, index) => {
-          return compactRes.push({
-            name: key.exerciseName,
-            type: key.exerciseType,
-          });
-        });
-        setListOfExercises(compactRes);
-      })
-      .catch(err => console.log(err));
-  };
-
-  React.useEffect(() => {
-    getList();
-  }, []);
-
   return (
     <div className='row workoutContainer'>
       <div className='workoutHeader'>Workout</div>
@@ -103,8 +77,6 @@ function Workout(props) {
           onClick={() => {
             API.getLastWorkout()
               .then(res => {
-                console.log('old');
-                console.log(res);
                 setWorkoutUUID(res.data.workout_id);
                 $('.openingContainer').css('display', 'none');
                 $('.content').css('display', 'flex');
@@ -120,8 +92,6 @@ function Workout(props) {
           onClick={() => {
             API.startWorkout().then(res => {
               setWorkoutUUID(res.data.workout_id);
-              console.log('new');
-              console.log(res);
               $('.openingContainer').css('display', 'none');
               $('.content').css('display', 'flex');
             });
@@ -144,8 +114,8 @@ function Workout(props) {
             <option key={0} data-type={'empty'} defaultValue='Select an Option'>
               Select an Option
             </option>
-            {listOfExercises.join() !== '' ? (
-              listOfExercises.map((key, index) => {
+            {props.listOfExercises.join() !== '' ? (
+              props.listOfExercises.map((key, index) => {
                 return (
                   <option key={index} data-type={key.type} value={key.name}>
                     {key.name}
