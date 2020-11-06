@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c0d1d266.chunk.css",
+    "main.js": "/static/js/main.c4c60107.chunk.js",
+    "main.js.map": "/static/js/main.c4c60107.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e1e40d43.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e1e40d43.js.map",
+    "static/js/2.47ae8a35.chunk.js": "/static/js/2.47ae8a35.chunk.js",
+    "static/js/2.47ae8a35.chunk.js.map": "/static/js/2.47ae8a35.chunk.js.map",
+    "static/js/3.f58c3156.chunk.js": "/static/js/3.f58c3156.chunk.js",
+    "static/js/3.f58c3156.chunk.js.map": "/static/js/3.f58c3156.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c0d1d266.chunk.css.map": "/static/css/main.c0d1d266.chunk.css.map",
+    "static/js/2.47ae8a35.chunk.js.LICENSE.txt": "/static/js/2.47ae8a35.chunk.js.LICENSE.txt",
+    "static/media/arms.973e4ace.png": "/static/media/arms.973e4ace.png",
+    "static/media/back.a5c495cc.png": "/static/media/back.a5c495cc.png",
+    "static/media/cardio.66ae60e6.png": "/static/media/cardio.66ae60e6.png",
+    "static/media/chest.72a32eb0.png": "/static/media/chest.72a32eb0.png",
+    "static/media/legs.0d1b64f9.png": "/static/media/legs.0d1b64f9.png",
+    "static/media/logo.103b5fa1.svg": "/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e1e40d43.js",
+    "static/js/2.47ae8a35.chunk.js",
+    "static/css/main.c0d1d266.chunk.css",
+    "static/js/main.c4c60107.chunk.js"
+  ]
+}
