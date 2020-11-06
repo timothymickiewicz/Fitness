@@ -7,11 +7,14 @@ import {
 } from 'react-router-dom';
 import './Navbar.css';
 
+import $ from 'jquery';
+
 import API from '../utils/API';
 
 import Stopwatch from './Timer/Stopwatch';
 import CreateExercise from './CreateExercise/CreateExercise';
 import Workout from './AddWorkout/Workout';
+import Estimate from './Estimate/Estimate';
 import Home from './Home/Home';
 
 const tabs = [
@@ -23,6 +26,25 @@ const tabs = [
 
 function Navbar(props) {
   const [listOfExercises, setListOfExercises] = React.useState([]);
+
+  const checkSetScrollArrows = () => {
+    let $elem = $('.nav');
+    $elem.on('scroll', () => {
+      let newScrollLeft = $elem.scrollLeft(),
+        width = $elem.outerWidth(),
+        scrollWidth = $elem.get(0).scrollWidth;
+      if (scrollWidth - newScrollLeft === width) {
+        $('.right').css('display', 'none');
+      } else {
+        $('.right').css('display', '');
+      }
+      if (newScrollLeft === 0) {
+        $('.left').css('display', '');
+      } else {
+        $('.left').css('display', 'block');
+      }
+    });
+  };
 
   //   Populates the dropdown
   const getList = () => {
@@ -46,9 +68,12 @@ function Navbar(props) {
 
   return (
     <Router>
+      {checkSetScrollArrows()}
+      <i className='fa fa-caret-right right'></i>
+      <i className='fa fa-caret-left left'></i>
       <div className='row'>
         <div className='container col-12'>
-          <nav>
+          <nav className='nav'>
             <ul className='navList'>
               <li key={0} id='home' className='navItem'>
                 <NavLink
@@ -92,7 +117,7 @@ function Navbar(props) {
               <Workout listOfExercises={listOfExercises} />
             </Route>
             <Route path={'/Estimate'} key='4'>
-              <Stopwatch />
+              <Estimate />
             </Route>
             <Route path='/' key='0'>
               <Home listOfExercises={listOfExercises} />
