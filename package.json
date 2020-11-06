@@ -39,10 +39,12 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "client": "cd client && npm start",
-    "server": "cd server && node server",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
     "seed": "node db/sets.js",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
