@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../server/models');
 const Workout = db.Workout;
 const WorkoutExercises = db.WorkoutExercises;
 const Exercises = db.Exercises;
