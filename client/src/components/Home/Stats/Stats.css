@@ -8,6 +8,10 @@
   width: calc(100vw - 10%);
 }
 
+.noStatsContainer {
+  padding: 20px;
+}
+
 .statsHeader {
   font-size: calc(10px + 3vw);
   color: #3f51b5;
@@ -15,7 +19,12 @@
   border-top: solid #3f51b5 2px;
 }
 
-.queryText {
+.noStats {
+  font-size: calc(10px + 1vw);
+  color: red;
+}
+
+.doStats {
   font-size: calc(10px + 1vw);
   color: #3f51b5;
 }

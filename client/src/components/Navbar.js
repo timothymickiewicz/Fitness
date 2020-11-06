@@ -14,7 +14,12 @@ import CreateExercise from './CreateExercise/CreateExercise';
 import Workout from './AddWorkout/Workout';
 import Home from './Home/Home';
 
-const tabs = [{ name: 'Stopwatch' }, { name: 'Create' }, { name: 'Workout' }];
+const tabs = [
+  { name: 'Stopwatch' },
+  { name: 'Create' },
+  { name: 'Workout' },
+  { name: 'Estimate' },
+];
 
 function Navbar(props) {
   const [listOfExercises, setListOfExercises] = React.useState([]);
@@ -85,6 +90,9 @@ function Navbar(props) {
             </Route>
             <Route path={'/Workout'} key='3'>
               <Workout listOfExercises={listOfExercises} />
+            </Route>
+            <Route path={'/Estimate'} key='4'>
+              <Stopwatch />
             </Route>
             <Route path='/' key='0'>
               <Home listOfExercises={listOfExercises} />
