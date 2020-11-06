@@ -4,7 +4,6 @@ var Sequelize = require('sequelize');
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || 'production';
 var config = require(path.join(__dirname, '/../config/config.js'))[env];
-console.log(config);
 var db = {};
 
 if (config.use_env_variable) {
