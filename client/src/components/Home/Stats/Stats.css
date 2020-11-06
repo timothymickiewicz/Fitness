@@ -9,8 +9,13 @@
 }
 
 .statsHeader {
-  font-size: calc(10px + 3vh);
+  font-size: calc(10px + 3vw);
   color: #3f51b5;
   border-bottom: solid #3f51b5 2px;
   border-top: solid #3f51b5 2px;
+}
+
+.queryText {
+  font-size: calc(10px + 1vw);
+  color: #3f51b5;
 }

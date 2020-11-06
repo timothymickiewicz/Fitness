@@ -33,15 +33,20 @@ let maxCalcNums = [
 // divide rep weight number by percent to get 1rm
 
 // simply add asyn before setweights () to make promise return on whatever page uses these
+
+// Takes all of one exercise's array of sets and calculates/returns the highest 1RM of all of them, then will receive the next exercise's array of sets, used for charting data for a particular exercise to see progression
 export const CalcMax = ({ setWeights }) => {
   let highestMax = 0;
-  console.log(setWeights);
-  setWeights.forEach((set, index) => {
-    console.log(set);
-    let percent = maxCalcNums.find(key => key.reps === set.reps).percent;
-    let max = set.weight / percent;
-    if (max > highestMax) {
-      highestMax = max;
+  let percent = 0;
+  setWeights.forEach((exerciseSets, index) => {
+    for (let i = 0; i < maxCalcNums.length; i++) {
+      if (maxCalcNums[i].reps === exerciseSets.reps) {
+        percent = maxCalcNums[i].percent;
+        break;
+      }
+    }
+    if (exerciseSets.weight / percent > highestMax) {
+      highestMax = exerciseSets.weight / percent;
     }
   });
   return highestMax;

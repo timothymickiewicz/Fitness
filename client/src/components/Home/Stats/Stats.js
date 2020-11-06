@@ -24,8 +24,11 @@ function Stats(props) {
   };
 
   return (
+    // 1. It has checked for data and returned something
+    // 2. It has checked for data and found nothing
+    // 3. It hasn't done anything yet, no search started
     <>
-      {props.data.join() !== '' ? (
+      {props.data.join() !== '' && props.checkData ? (
         <div className='row statsContainer'>
           <div className='row'>
             <ResponsiveContainer className='col-12' width='100%' height={200}>
@@ -44,7 +47,13 @@ function Stats(props) {
             </ResponsiveContainer>
           </div>
         </div>
-      ) : null}
+      ) : !props.checkData ? (
+        <div className='queryText'>No data to display</div>
+      ) : (
+        <div className='queryText'>
+          Enter a search parameter above to see your data
+        </div>
+      )}
     </>
   );
 }

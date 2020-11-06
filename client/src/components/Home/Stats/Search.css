@@ -8,7 +8,7 @@
 .chartHeader {
   flex: 0 1 auto;
   margin-bottom: 1rem;
-  font-size: calc(15px + 2vh);
+  font-size: calc(15px + 2vw);
   border-bottom: solid #3f51b5 2px;
   border-top: solid #3f51b5 2px;
 }

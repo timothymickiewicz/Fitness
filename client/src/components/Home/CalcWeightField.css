@@ -1,6 +1,7 @@
 .error {
   color: red;
-  font-size: calc(10px + 1vh);
+  font-size: calc(10px + 1vw);
+  flex: 0 1 100%;
 }
 
 .weightCalcContainer {
@@ -12,6 +13,6 @@
 
 .weightSlot {
   flex: 1 0 40%;
-  font-size: calc(10px + 1vh);
+  font-size: calc(10px + 1vw);
   color: #3f51b5;
 }

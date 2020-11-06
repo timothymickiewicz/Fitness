@@ -23,6 +23,6 @@
 }
 
 .iconItem {
-  height: calc(70px + 3.5vh);
+  height: calc(70px + 3.5vw);
   width: auto;
 }

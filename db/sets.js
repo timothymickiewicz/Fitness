@@ -1,21 +1,37 @@
-// const { v4: uuidv4 } = require('uuid');
+const db = require('../models');
+const Workout = db.Workout;
+const WorkoutExercises = db.WorkoutExercises;
+const Exercises = db.Exercises;
 
-// module.exports = function (sequelize, DataTypes) {
-//   // Stores sets and their weights into the exercise they are attached to
-//   const Sets = sequelize.define('Sets', {
-//     sets_id: {
-//       type: DataTypes.UUID,
-//       primaryKey: true,
-//       defaultValue: function () {
-//         return uuidv4();
-//       },
-//     },
-//     // Stored as string to be evaluated as JSON when returned
-//     setWeights: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-//   });
+let testChart = () => {
+  let workoutId = '';
 
-//   return Sets;
-// };
+  Exercises.create({ exerciseName: 'Barbell Bench', exerciseType: 'Chest' });
+
+  Workout.create().then(newWorkout => {
+    workoutId = newWorkout.workout_id;
+  });
+
+  for (let i = 0; i < 30; i++) {
+    let reps =
+      Math.floor(Math.random() * (Math.ceil(12) - Math.ceil(8) + 1)) + 8;
+    let weight =
+      Math.floor(
+        Math.random() * (Math.ceil(225 + i / 2) - Math.ceil(200 + i / 2) + 1)
+      ) +
+      (200 + (i + 2));
+    let seedDate = new Date();
+    seedDate.setTime(seedDate.getTime() - 24 * 60 * 60 * 1000 * (30 - i));
+    WorkoutExercises.create({
+      exerciseName: 'Barbell Bench',
+      exerciseType: 'Chest',
+      numOfSets: 4,
+      breakDuration: 90,
+      setWeights: `{"reps": ${reps}, "weight": ${weight}},`,
+      WorkoutWorkoutId: workoutId,
+      createdAt: seedDate,
+    });
+  }
+};
+
+testChart();
