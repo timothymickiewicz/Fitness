@@ -29,6 +29,16 @@ function Workout(props) {
     }
   };
 
+  const handleClearFields = () => {
+    $('.inputBoxSetsField').val('');
+    $('#exercises').val('Select an Option');
+    $('#setSets').val('');
+    setSets(0);
+    $('#breakDuration').val('');
+    $('.openingContainer').css('display', '');
+    $('.content').css('display', 'none');
+  };
+
   //   Submits the workout, returns UUID of workoutExercise to post the set data
   const handleSubmitWorkout = () => {
     API.createWorkoutExercise({
@@ -50,17 +60,17 @@ function Workout(props) {
       setsField.push(
         <div key={i} className='setsField'>
           <div className='subSetsField'>
-            Set {i} Reps:
-            <input
-              id={'setsFieldReps' + i}
-              className='inputBoxSetsField'></input>
-          </div>
-          <div className='subSetsField'>
             Set {i} Weight:
             <input
               id={'setsFieldWeight' + i}
               className='inputBoxSetsField'
               placeholder='Enter as lbs'></input>
+          </div>
+          <div className='subSetsField'>
+            Set {i} Reps:
+            <input
+              id={'setsFieldReps' + i}
+              className='inputBoxSetsField'></input>
           </div>
         </div>
       );
@@ -160,6 +170,7 @@ function Workout(props) {
           onClick={() => {
             handleSetWeights();
             handleSubmitWorkout();
+            handleClearFields();
           }}>
           Submit
         </button>
