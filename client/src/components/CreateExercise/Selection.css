@@ -5,7 +5,7 @@
 }
 
 .selectionHeader {
-  font-size: calc(10px + 3vh);
+  font-size: calc(10px + 3vw);
   color: #3f51b5;
   position: absolute;
   top: 5%;
@@ -22,7 +22,7 @@
 }
 
 .backBtn {
-  height: calc(10px + 3vh);
+  height: calc(10px + 3vw);
   width: auto;
   float: right;
   position: absolute;
@@ -65,7 +65,7 @@
 }
 
 .submitExercise {
-  height: calc(10px + 3vh);
+  height: calc(10px + 3vw);
   color: #3f51b5 !important;
   background-color: #d9d9d9 !important;
   width: 80px;

@@ -1,12 +1,10 @@
 const db = require('../models');
 const Workout = db.Workout;
 const WorkoutExercises = db.WorkoutExercises;
-const Sets = db.Sets;
 const Exercises = db.Exercises;
 
 // Making relationships
 Workout.hasMany(WorkoutExercises, { as: 'WorkoutExercises' });
-WorkoutExercises.hasMany(Sets, { as: 'ExerciseSets' });
 
 module.exports = {
   startWorkout: function (req, res) {
@@ -17,7 +15,7 @@ module.exports = {
   getAllWorkouts: function (req, res) {
     console.log(req);
     db.Workout.findAll()
-      .then(workouts => res.status(200).json(workouts))
+      .then(workouts => {})
       .catch(err => res.status(422).json(err));
   },
   findAllWorkoutExercises: function (req, res) {
@@ -68,6 +66,7 @@ module.exports = {
       exerciseType: req.body.exerciseType,
       numOfSets: req.body.numOfSets,
       breakDuration: req.body.breakDuration,
+      setWeights: req.body.setWeights,
       WorkoutWorkoutId: req.body.WorkoutWorkoutId,
     })
       .then(workoutExercise => res.status(200).send(workoutExercise))
@@ -79,10 +78,19 @@ module.exports = {
       .then(exercise => res.status(200).send(exercise))
       .catch(err => res.status(422).send(err));
   },
-  addSetWeights: function (req, res) {
-    console.log(req.body);
-    Sets.create(req.body)
-      .then(exercise => res.status(200).send(exercise))
-      .catch(err => res.status(422).send(err));
+  getAllByYear: function (req, res) {
+    WorkoutExercises.findAll({
+      where: {
+        exerciseName: req.body.exerciseName,
+      },
+      order: [['createdAt', 'ASC']],
+    })
+      .then(data => {
+        res.status(200).send(data);
+      })
+      .catch(err => {
+        res.status(422).json(err);
+        console.log(err);
+      });
   },
 };

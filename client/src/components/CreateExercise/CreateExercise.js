@@ -45,7 +45,7 @@ function CreateExercise(props) {
       })}
     </div>
   ) : (
-    <Selection type={selection} onClick={handleBack} />
+    <Selection getList={props.getList} type={selection} onClick={handleBack} />
   );
 }
 
