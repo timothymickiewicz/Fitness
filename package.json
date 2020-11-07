@@ -40,9 +40,10 @@
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "cd server && node server.js",
+    "start:prod": "cd server && node server",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
+    "dev": "concurrently \"cd server && node server\" \"cd client && npm start\"",
     "seed": "node db/sets.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",

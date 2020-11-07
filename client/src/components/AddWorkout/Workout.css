@@ -20,7 +20,7 @@
 .content {
   text-align: left;
   margin: 0 5% 0 5%;
-  display: none;
+  display: flex;
   justify-content: flex-start;
   align-content: left;
   flex-flow: column;
