@@ -1,7 +1,6 @@
 <h1>Personal Fitness</h1>
 <p>Fitness App</p>
-<!-- <a align="right" href="" class="live">(Live-link)</a> -->
-(Live-link pending)
+<a align="right" href="https://cryptic-thicket-72551.herokuapp.com/" class="live">(Live-link)</a>
 <a align="left" href="https://github.com/timothymickiewicz/Fitness" class="code">(Code)</a>
 <hr>
 <h2>Purpose</h2>
