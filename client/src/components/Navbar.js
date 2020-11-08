@@ -69,10 +69,10 @@ function Navbar(props) {
   return (
     <Router>
       {checkSetScrollArrows()}
-      <i className='fa fa-caret-right right'></i>
-      <i className='fa fa-caret-left left'></i>
       <div className='row'>
         <div className='container col-12'>
+          <i className='fa fa-caret-right right'></i>
+          <i className='fa fa-caret-left left'></i>
           <nav className='nav'>
             <ul className='navList'>
               <li key={0} id='home' className='navItem'>

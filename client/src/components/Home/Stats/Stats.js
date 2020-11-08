@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  Legend,
 } from 'recharts';
 
 function Stats(props) {
@@ -40,7 +41,7 @@ function Stats(props) {
         <div className='row'>
           <ResponsiveContainer className='col-12' width='100%' height={200}>
             <LineChart className='chart' data={props.data}>
-              <Line type='monotone' dataKey='uv' stroke='#3f51b5' />
+              <Line type='monotone' dataKey='uv' stroke='#3f51b5' name='1RM' />
               <XAxis
                 dataKey='name'
                 tickFormatter={formatXAxis}
@@ -50,6 +51,19 @@ function Stats(props) {
                 width={28}
                 stroke='#3f51b5'></YAxis>
               <Tooltip cursor={false} />
+              <Legend
+                width={60}
+                verticalAlign='top'
+                wrapperStyle={{
+                  top: 0,
+                  right: 0,
+                  backgroundColor: '#d9d9d9',
+                  border: '1px solid #3f51b5',
+                  borderRadius: 3,
+                  lineHeight: '30px',
+                  color: '#3f51b5',
+                }}
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>

@@ -96,14 +96,14 @@ function Workout(props) {
       setsField.push(
         <div key={i} className='setsField'>
           <div className='subSetsField'>
-            Set {i} Weight:
+            <span className='subSetsFieldText'>Set {i} Weight: </span>
             <input
               id={'setsFieldWeight' + i}
               className='inputBoxSetsField'
               placeholder='Enter as lbs'></input>
           </div>
           <div className='subSetsField'>
-            Set {i} Reps:
+            <span className='subSetsFieldText'>Set {i} Reps: </span>
             <input
               id={'setsFieldReps' + i}
               className='inputBoxSetsField'></input>
