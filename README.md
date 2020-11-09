@@ -1,5 +1,5 @@
 <h1>Personal Fitness</h1>
-<p>Fitness App</p>
+<p>Predictive Workout App</p>
 <a align="right" href="https://cryptic-thicket-72551.herokuapp.com/" class="live">(Live-link)</a>
 <a align="left" href="https://github.com/timothymickiewicz/Fitness" class="code">(Code)</a>
 <hr>
@@ -7,7 +7,7 @@
 <p>This application takes daily workout information and turns it into visual and numerical data to assist with bodybuilding routines. Lack of hard data/journaling is a leading cause of plateauing in the gym world, and this application tackles that challenge head-on. Users are able to log their workouts/exercises/sets/reps and have the option of creating their own custom exercises to use in their workouts. The data that is collected is then graphed out for reference to see where your sticking points are, and where you have made progress. A few helpful tools have been added such as a barbell plate calculator, a weekly weight increase estimator, and suggestions based on athletic science, bodybuilding mathematics, and lifting standards. 
 </p>
 <hr>
-<h2>Test it Out</h2>
+<h2>Run the Code</h2>
 <ol>
     <li>Clone repository and <code>git clone (paste clone url)</code> to your local machine</li>
     <li>Open the folder in your code editor and <code>npm i</code> to install the necessary dependencies</li>
