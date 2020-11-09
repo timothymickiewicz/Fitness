@@ -9,6 +9,7 @@ import Config from '../../config';
 
 function getDefaultState() {
   return {
+    storedTime: 0,
     isRunning: false,
     time: 0,
     timeList: [],
@@ -20,6 +21,17 @@ class Stopwatch extends Component {
     super(props);
     this.state = getDefaultState();
     this.timerRef = null;
+  }
+
+  componentWillUnmount() {
+    const { time } = this.state;
+    this.props.updateTimer(time);
+  }
+
+  componentDidMount() {
+    if (this.props.time !== 0) {
+      this.setState({ time: this.props.currentTime });
+    }
   }
 
   updateTimer(extraTime) {

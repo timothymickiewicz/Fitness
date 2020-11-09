@@ -26,6 +26,7 @@ const tabs = [
 
 function Navbar(props) {
   const [listOfExercises, setListOfExercises] = React.useState([]);
+  const [time, setTimer] = React.useState(0);
 
   const checkSetScrollArrows = () => {
     let $elem = $('.nav');
@@ -44,6 +45,10 @@ function Navbar(props) {
         $('.left').css('display', 'block');
       }
     });
+  };
+
+  const updateTimer = time => {
+    setTimer(time);
   };
 
   //   Populates the dropdown
@@ -108,7 +113,7 @@ function Navbar(props) {
           <Switch>
             {/* Creates routes to each page matching the li element that is clicked on */}
             <Route path={'/Stopwatch'} key='1'>
-              <Stopwatch />
+              <Stopwatch updateTimer={updateTimer} currentTime={time} />
             </Route>
             <Route path={'/Create'} key='2'>
               <CreateExercise getList={getList} />
