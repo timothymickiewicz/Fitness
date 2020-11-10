@@ -31,7 +31,7 @@ function Navbar(props) {
   const [time, setTimer] = React.useState(0);
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
   const [lapsList, setLapsList] = React.useState([]);
-  const timeRef = React.useRef(null)
+  const timeRef = React.useRef(null);
 
   const checkSetScrollArrows = () => {
     let $elem = $('.nav');
@@ -52,28 +52,27 @@ function Navbar(props) {
     });
   };
 
-
   // Clears stopwatch interval
   const clearInterval = () => {
-    window.clearInterval(timeRef.current)
-  }
+    window.clearInterval(timeRef.current);
+  };
 
   // Adds laps to the Stopwatch laps list
-  const handleSetLapsList = (lapTime) => {
+  const handleSetLapsList = lapTime => {
     setLapsList([...lapsList, lapTime]);
-  }
+  };
 
   // Toggles timer for Stopwatch
   const handleIsTimerRunning = () => {
-    isTimerRunning ? setIsTimerRunning(false) : setIsTimerRunning(true)
-  }
+    isTimerRunning ? setIsTimerRunning(false) : setIsTimerRunning(true);
+  };
 
   // Resets Stopwatch time to default
   const handleResetTimer = () => {
     setTimer(0);
     setIsTimerRunning(false);
     setLapsList([]);
-  }
+  };
 
   //   Populates the dropdown
   const getList = () => {
@@ -96,10 +95,10 @@ function Navbar(props) {
     // Keeps timer running as long as the toggle is true, allows continuous runtime after Stopwatch unmounts
     if (isTimerRunning) {
       timeRef.current = window.setInterval(() => {
-        setTimer(time => time + Config.updateInterval)
+        setTimer(time => time + Config.updateInterval);
       }, Config.updateInterval);
-    };
-    return clearInterval
+    }
+    return clearInterval;
   }, [isTimerRunning]);
 
   return (
@@ -145,7 +144,14 @@ function Navbar(props) {
           <Switch>
             {/* Creates routes to each page matching the li element that is clicked on */}
             <Route path={'/Stopwatch'} key='1'>
-              <Stopwatch isTimerRunning={isTimerRunning} currentTime={time} handleResetTimer={handleResetTimer} handleIsTimerRunning={handleIsTimerRunning} lapsList={lapsList} handleSetLapsList={handleSetLapsList} />
+              <Stopwatch
+                isTimerRunning={isTimerRunning}
+                currentTime={time}
+                handleResetTimer={handleResetTimer}
+                handleIsTimerRunning={handleIsTimerRunning}
+                lapsList={lapsList}
+                handleSetLapsList={handleSetLapsList}
+              />
             </Route>
             <Route path={'/Create'} key='2'>
               <CreateExercise getList={getList} />

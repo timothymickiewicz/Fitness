@@ -48,7 +48,9 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "prettier": "prettier --write src/**/*.{js,css,md,json}"
+    "prettier": "prettier --write src/**/*.{js,css,md,json}",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -75,12 +77,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier"
+      "pre-commit": "prettier --write . && git add -A ."
     }
   },
   "lint-staged": {
     "linters": {
-      "src/**/*.{js,css}": ["prettier --write", "git add"]
+      "client/**/**/*.{js,css}": [
+        "prettier --write",
+        "git add"
+      ]
     }
   },
   "heroku-run-build-script": true

@@ -6,7 +6,6 @@ import Controls from './Controls';
 import LapTimeList from './LapTimeList';
 
 class Stopwatch extends Component {
-
   start() {
     this.props.handleIsTimerRunning();
   }
@@ -24,7 +23,6 @@ class Stopwatch extends Component {
   }
 
   render() {
-
     return (
       <div className='Stopwatch'>
         <Timer time={this.props.currentTime} />
