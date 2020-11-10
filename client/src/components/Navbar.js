@@ -9,6 +9,7 @@ import './Navbar.css';
 
 import $ from 'jquery';
 
+import Config from '../config';
 import API from '../utils/API';
 
 import Stopwatch from './Timer/Stopwatch';
@@ -26,7 +27,11 @@ const tabs = [
 
 function Navbar(props) {
   const [listOfExercises, setListOfExercises] = React.useState([]);
+  // Stopwatch states to allow timer to keep running between tabs
   const [time, setTimer] = React.useState(0);
+  const [isTimerRunning, setIsTimerRunning] = React.useState(false);
+  const [lapsList, setLapsList] = React.useState([]);
+  const timeRef = React.useRef(null)
 
   const checkSetScrollArrows = () => {
     let $elem = $('.nav');
@@ -47,9 +52,28 @@ function Navbar(props) {
     });
   };
 
-  const updateTimer = time => {
-    setTimer(time);
-  };
+
+  // Clears stopwatch interval
+  const clearInterval = () => {
+    window.clearInterval(timeRef.current)
+  }
+
+  // Adds laps to the Stopwatch laps list
+  const handleSetLapsList = (lapTime) => {
+    setLapsList([...lapsList, lapTime]);
+  }
+
+  // Toggles timer for Stopwatch
+  const handleIsTimerRunning = () => {
+    isTimerRunning ? setIsTimerRunning(false) : setIsTimerRunning(true)
+  }
+
+  // Resets Stopwatch time to default
+  const handleResetTimer = () => {
+    setTimer(0);
+    setIsTimerRunning(false);
+    setLapsList([]);
+  }
 
   //   Populates the dropdown
   const getList = () => {
@@ -69,7 +93,14 @@ function Navbar(props) {
 
   React.useEffect(() => {
     getList();
-  }, []);
+    // Keeps timer running as long as the toggle is true, allows continuous runtime after Stopwatch unmounts
+    if (isTimerRunning) {
+      timeRef.current = window.setInterval(() => {
+        setTimer(time => time + Config.updateInterval)
+      }, Config.updateInterval);
+    };
+    return clearInterval
+  }, [isTimerRunning]);
 
   return (
     <Router>
@@ -97,6 +128,7 @@ function Navbar(props) {
                 return (
                   <li key={index} id={key.name} className='navItem'>
                     <NavLink
+                      exact
                       to={'/' + key.name}
                       activeStyle={{
                         fontWeight: 'bold',
@@ -113,7 +145,7 @@ function Navbar(props) {
           <Switch>
             {/* Creates routes to each page matching the li element that is clicked on */}
             <Route path={'/Stopwatch'} key='1'>
-              <Stopwatch updateTimer={updateTimer} currentTime={time} />
+              <Stopwatch isTimerRunning={isTimerRunning} currentTime={time} handleResetTimer={handleResetTimer} handleIsTimerRunning={handleIsTimerRunning} lapsList={lapsList} handleSetLapsList={handleSetLapsList} />
             </Route>
             <Route path={'/Create'} key='2'>
               <CreateExercise getList={getList} />

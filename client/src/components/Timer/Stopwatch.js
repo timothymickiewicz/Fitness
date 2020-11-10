@@ -5,92 +5,39 @@ import Timer from './Timer';
 import Controls from './Controls';
 import LapTimeList from './LapTimeList';
 
-import Config from '../../config';
-
-function getDefaultState() {
-  return {
-    storedTime: 0,
-    isRunning: false,
-    time: 0,
-    timeList: [],
-  };
-}
-
 class Stopwatch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = getDefaultState();
-    this.timerRef = null;
-  }
-
-  componentWillUnmount() {
-    const { time } = this.state;
-    this.props.updateTimer(time);
-  }
-
-  componentDidMount() {
-    if (this.props.time !== 0) {
-      this.setState({ time: this.props.currentTime });
-    }
-  }
-
-  updateTimer(extraTime) {
-    const { time } = this.state;
-    this.setState({ time: time + extraTime });
-  }
 
   start() {
-    this.setState(
-      {
-        isRunning: true,
-      },
-      () => {
-        this.timerRef = setInterval(() => {
-          this.updateTimer(Config.updateInterval);
-        }, Config.updateInterval);
-      }
-    );
+    this.props.handleIsTimerRunning();
   }
 
   stop() {
-    this.setState(
-      {
-        isRunning: false,
-      },
-      () => {
-        clearInterval(this.timerRef);
-      }
-    );
+    this.props.handleIsTimerRunning();
   }
 
   reset() {
-    this.setState(getDefaultState());
+    this.props.handleResetTimer();
   }
 
   addLapTime() {
-    const { time, timeList } = this.state;
-
-    this.setState({
-      timeList: [...timeList, time],
-    });
+    this.props.handleSetLapsList(this.props.currentTime);
   }
 
   render() {
-    const { isRunning, time, timeList } = this.state;
 
     return (
       <div className='Stopwatch'>
-        <Timer time={time} />
+        <Timer time={this.props.currentTime} />
 
         <Controls
-          isRunning={isRunning}
+          isRunning={this.props.isTimerRunning}
           start={() => this.start()}
           stop={() => this.stop()}
           reset={() => this.reset()}
           addLapTime={() => this.addLapTime()}
         />
 
-        <LapTimeList timeList={timeList} />
+        <LapTimeList timeList={this.props.lapsList} />
       </div>
     );
   }
