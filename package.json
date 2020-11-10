@@ -47,7 +47,8 @@
     "seed": "node db/sets.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "prettier": "prettier --write src/**/*.{js,css,md,json}"
   },
   "eslintConfig": {
     "extends": [
@@ -74,12 +75,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npm run prettier"
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.{js,css,md}": "prettier --write"
+    "linters": {
+      "src/**/*.{js,css}": ["prettier --write", "git add"]
+    }
   },
   "heroku-run-build-script": true
 }
