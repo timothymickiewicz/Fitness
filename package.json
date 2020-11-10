@@ -77,16 +77,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier --write . && git add -A ."
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "linters": {
-      "client/**/**/*.{js,css}": [
-        "prettier --write",
-        "git add"
-      ]
-    }
+    "*": "prettier --write"
   },
   "heroku-run-build-script": true
 }
