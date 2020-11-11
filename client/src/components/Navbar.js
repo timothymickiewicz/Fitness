@@ -119,7 +119,7 @@ function Navbar(props) {
                     color: '#3f51b5',
                   }}
                   className='link'>
-                  Dash
+                  Dashboard
                 </NavLink>
               </li>
               {/* Creates li elements for each page */}

@@ -14,13 +14,13 @@ function Workout(props) {
   let [setWeights, setSetWeights] = React.useState('');
 
   React.useEffect(() => {
+    setSets(JSON.parse(localStorage.getItem('sets')));
     if (localStorage.getItem('workoutUUID')) {
       setWorkoutUUID(localStorage.getItem('workoutUUID'));
     }
     // Gets localstorage data after returning to tab, sets field values accordingly
-    $('#exercises').val(localStorage.getItem('exercise'));
     $('#setSets').val(JSON.parse(localStorage.getItem('sets')));
-    setSets(JSON.parse(localStorage.getItem('sets')));
+    $('#exercises').val(localStorage.getItem('exercise'));
     $('#breakDuration').val(JSON.parse(localStorage.getItem('duration')));
     for (let i = 1; i <= JSON.parse(localStorage.getItem('sets')); i++) {
       $('#setsFieldReps' + i).val(
@@ -30,20 +30,6 @@ function Workout(props) {
         JSON.parse(localStorage.getItem(`setsFieldWeight${i}`))
       );
     }
-
-    // Sets localstorage data after leaving tab
-    return function setStorage() {
-      for (let i = 1; i <= $('#setSets').val(); i++) {
-        localStorage.setItem(
-          `setsFieldReps${i}`,
-          JSON.stringify($('#setsFieldReps' + i).val())
-        );
-        localStorage.setItem(
-          `setsFieldWeight${i}`,
-          JSON.stringify($('#setsFieldWeight' + i).val())
-        );
-      }
-    };
   }, [props.listOfExercises, workoutUUID]);
 
   const handleGetLastWorkout = () => {
@@ -53,7 +39,7 @@ function Workout(props) {
         localStorage.setItem('workoutUUID', res.data.workout_id);
       })
       // replace this with alert
-      .catch(err => alert('no previous workout'));
+      .catch(err => $("#continue").text("No Previous Workouts"));
   };
 
   const handleClear = () => {
@@ -86,12 +72,7 @@ function Workout(props) {
       setWeights: setWeights,
       WorkoutWorkoutId: localStorage.getItem('workoutUUID'),
     }).then(res => {
-      localStorage.clear();
-      $('.inputBoxSetsField').val('');
-      $('#exercises').val('Select an Option');
-      $('#setSets').val('');
-      setSets(0);
-      $('#breakDuration').val('');
+      handleClear();
     });
   };
 
@@ -106,13 +87,31 @@ function Workout(props) {
             <input
               id={'setsFieldWeight' + i}
               className='inputBoxSetsField'
-              placeholder='Enter as lbs'></input>
+              placeholder='Enter as lbs'
+              onChange={(e) => {
+                if (localStorage.getItem(`setsFieldWeight${i}`)) {
+                  localStorage.removeItem(`setsFieldWeight${i}`);
+                }
+                localStorage.setItem(
+                  `setsFieldWeight${i}`,
+                  JSON.stringify(e.target.value)
+                );
+              }}></input>
           </div>
           <div className='subSetsField'>
             <span className='subSetsFieldText'>Set {i} Reps: </span>
             <input
               id={'setsFieldReps' + i}
-              className='inputBoxSetsField'></input>
+              className='inputBoxSetsField'
+              onChange={(e) => {
+                if (localStorage.getItem(`setsFieldReps${i}`)) {
+                  localStorage.removeItem(`setsFieldReps${i}`);
+                }
+                localStorage.setItem(
+                  `setsFieldReps${i}`,
+                  JSON.stringify(e.target.value)
+                );
+              }}></input>
           </div>
         </div>
       );
