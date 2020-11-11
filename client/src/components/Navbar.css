@@ -15,9 +15,9 @@ ul {
   background: rgb(5, 244, 250);
   background: linear-gradient(
     90deg,
-    rgba(5, 244, 250, 1) 0%,
-    rgba(6, 147, 244, 1) 47%,
-    rgba(5, 244, 250, 1) 100%
+    #05f4fa 0%,
+    rgba(6, 147, 244, 1) 50%,
+    #05f4fa 100%
   );
   width: 100vw;
   overflow-x: scroll;

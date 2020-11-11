@@ -39,12 +39,12 @@ function Navbar(props) {
       let newScrollLeft = $elem.scrollLeft(),
         width = $elem.outerWidth(),
         scrollWidth = $elem.get(0).scrollWidth;
-      if (scrollWidth - newScrollLeft === width) {
+      if (scrollWidth - newScrollLeft <= width) {
         $('.right').css('display', 'none');
       } else {
         $('.right').css('display', '');
       }
-      if (newScrollLeft === 0) {
+      if (newScrollLeft <= 0) {
         $('.left').css('display', '');
       } else {
         $('.left').css('display', 'block');

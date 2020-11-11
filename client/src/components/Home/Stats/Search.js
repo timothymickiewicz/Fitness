@@ -15,15 +15,21 @@ function Search(props) {
         onChange={e => {
           handleSetQuery(e.target.value);
         }}
-        name='exercises'
-        id='exercises'>
-        <option key={0} data-type={'empty'} defaultValue='Select an Option'>
+        name='exerciseList'
+        id='exerciseList'>
+        <option
+          key={0}
+          data-type={'empty'}
+          value=''
+          defaultValue=''
+          selected
+          disabled={true}>
           Select an Option
         </option>
         {props.listOfExercises.join() !== '' ? (
           props.listOfExercises.map((key, index) => {
             return (
-              <option key={index} data-type={key.type} value={key.name}>
+              <option key={index + 1} data-type={key.type} value={key.name}>
                 {key.name}
               </option>
             );

@@ -4,7 +4,7 @@
 <a align="left" href="https://github.com/timothymickiewicz/Fitness" class="code">(Code)</a>
 <hr>
 <h2>Purpose</h2>
-<p>This application takes daily workout information and turns it into visual and numerical data to assist with bodybuilding routines. Lack of hard data/journaling is a leading cause of plateauing in the gym world, and this application tackles that challenge head-on. Users are able to log their workouts/exercises/sets/reps and have the option of creating their own custom exercises to use in their workouts. The data that is collected is then graphed out for reference to see where your sticking points are, and where you have made progress. A few helpful tools have been added such as a barbell plate calculator, a weekly weight increase estimator, and suggestions based on athletic science, bodybuilding mathematics, and lifting standards. 
+<p>This application takes daily workout information and turns it into visual and numerical data to assist with bodybuilding routines. Lack of hard data/journaling is a leading cause of plateauing in the gym world, and this application tackles that challenge head-on. Users are able to log their workouts/exercises/sets/reps and have the ability of inputting their own custom exercises to use in their workouts. The data that is collected is then graphed out to see where your sticking points are over time, and where you have made progress. A few helpful tools have been added such as a barbell plate calculator, a weekly weight increase estimator, and suggestions based on athletic science, bodybuilding calculations, and lifting standards. Sets are reduced to a calculated 1 rep max (1RM) for uniformity of data and this measurement also serves as a solid indicator of the effort used during a set. 1RM calculations use a combination of reps and weight (volume of weight lifted) to output a single number that predicts your highest possible single repetition of weight for a given exercise. Users can also toggle the chart to show their actual lifted weight ranges for an exercise. The range chart disregards the number of reps they performed and the effort they put into lifting the sets, but can give a different level of insight into the user's lifting habits.
 </p>
 <hr>
 <h2>Run the Code</h2>
@@ -16,13 +16,13 @@
 </ol>
 <br>
 <h2>Technologies</h2>
-<p>React, JavaScript, Node, jQuery, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-router-dom, UUID, Prettier, Lint-Staged</p>
+<p>React, JavaScript, Node, jQuery, HTML5, CSS3, Express, MySQL, Sequelize, Recharts, Axios, React-Router-Dom, UUID, Prettier, Husky, Lint-Staged, Local Storage</p>
 <br>
 <br>
 (Fully custom CSS, no external styling libraries used aside from Recharts)
 <hr>
 <h2>Skills</h2>
-<p>ORM, Predictive Calculations, Data Visualization, Mobile First Design, PWA Development</p>
+<p>ORM, Predictive Calculations, Data Visualization, Mobile First Design, PWA Development, Persisting Data/Timer</p>
 <hr>
 <h2>Contributors</h2>
 <p>Everyone who contributed to create the necessary NPM packages, and myself.

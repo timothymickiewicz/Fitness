@@ -1,5 +1,5 @@
 .homeContainer {
-  height: 100vh;
+  height: auto;
   width: calc(100vw - 10%);
   margin: 5%;
 }

@@ -3,6 +3,8 @@
   margin-bottom: 1rem;
   background-color: #d9d9d9;
   color: #3f51b5;
+  height: 4vh;
+  font-size: 2.75vh;
 }
 
 .workoutHeader {
@@ -12,7 +14,7 @@
 }
 
 .workoutContainer {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   position: relative;
 }

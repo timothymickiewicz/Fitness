@@ -9,9 +9,14 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  BarChart,
+  CartesianGrid,
+  Bar,
 } from 'recharts';
 
 function Stats(props) {
+  const [toggleChart, setToggleChart] = React.useState(false)
+
   React.useEffect(() => {}, [props.data]);
 
   const formatXAxis = tickItem => {
@@ -39,33 +44,57 @@ function Stats(props) {
     <div className={setContainerClass()}>
       {props.data.join() !== '' && props.checkData ? (
         <div className='row'>
-          <ResponsiveContainer className='col-12' width='100%' height={200}>
-            <LineChart className='chart' data={props.data}>
-              <Line type='monotone' dataKey='uv' stroke='#3f51b5' name='1RM' />
-              <XAxis
-                dataKey='name'
-                tickFormatter={formatXAxis}
-                stroke='#3f51b5'></XAxis>
-              <YAxis
-                tickFormatter={formatYAxis}
-                width={28}
-                stroke='#3f51b5'></YAxis>
-              <Tooltip cursor={false} />
-              <Legend
-                width={60}
-                verticalAlign='top'
-                wrapperStyle={{
-                  top: 0,
-                  right: 0,
-                  backgroundColor: '#d9d9d9',
-                  border: '1px solid #3f51b5',
-                  borderRadius: 3,
-                  lineHeight: '30px',
-                  color: '#3f51b5',
-                }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <button 
+          className="toggleCharts" 
+          onClick={() => setToggleChart(toggleChart ? false : true)}>
+            {toggleChart ? "Line Chart" : "Range Chart"}
+          </button>
+          {toggleChart ? 
+            (
+              <ResponsiveContainer className='col-12' width='100%' height={200} data={props.data}>
+                <BarChart>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="pv" fill="#8884d8" />
+                  <Bar dataKey="uv" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            )
+          :
+            (
+              <ResponsiveContainer className='col-12' width='100%' height={200}>
+                <LineChart className='chart' data={props.data}>
+                  <Line type='monotone' dataKey='uv' stroke='#3f51b5' name='1RM' />
+                  <XAxis
+                    dataKey='name'
+                    tickFormatter={formatXAxis}
+                    stroke='#3f51b5'></XAxis>
+                  <YAxis
+                    tickFormatter={formatYAxis}
+                    width={28}
+                    stroke='#3f51b5'></YAxis>
+                  <Tooltip cursor={false} />
+                  <Legend
+                    width={60}
+                    verticalAlign='top'
+                    wrapperStyle={{
+                      top: 0,
+                      right: 0,
+                      backgroundColor: '#d9d9d9',
+                      border: '1px solid #3f51b5',
+                      borderRadius: 3,
+                      lineHeight: '30px',
+                      color: '#3f51b5',
+                    }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            )
+          }
+
         </div>
       ) : !props.checkData ? (
         <div className='noStats'>No data to display</div>

@@ -162,13 +162,13 @@ function Workout(props) {
                 value=''
                 defaultValue=''
                 disabled
-                hidden>
+                selected>
                 Select an Option
               </option>
               {props.listOfExercises.join() !== '' ? (
                 props.listOfExercises.map((key, index) => {
                   return (
-                    <option key={index} data-type={key.type} value={key.name}>
+                    <option key={index + 1} data-type={key.type} value={key.name}>
                       {key.name}
                     </option>
                   );
@@ -176,7 +176,7 @@ function Workout(props) {
               ) : (
                 <option
                   id='exercises'
-                  key={0}
+                  key={1000}
                   disabled={true}
                   value='No Workouts Created'>
                   No Workouts Created
