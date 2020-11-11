@@ -25180,32 +25180,30 @@
                 }
                 Object(i.a)(n, e);
                 var r = n.prototype;
-                return (
-                  (r.getChildContext = function () {
-                    var e;
-                    return ((e = {})[a] = this.emitter), e;
-                  }),
-                  (r.componentWillReceiveProps = function (e) {
-                    if (this.props.value !== e.value) {
-                      var n,
-                        r = this.props.value,
-                        o = e.value;
-                      (
-                        (i = r) === (a = o)
-                          ? 0 !== i || 1 / i === 1 / a
-                          : i !== i && a !== a
-                      )
-                        ? (n = 0)
-                        : ((n = 'function' === typeof t ? t(r, o) : c),
-                          0 !== (n |= 0) && this.emitter.set(e.value, n));
-                    }
-                    var i, a;
-                  }),
-                  (r.render = function () {
-                    return this.props.children;
-                  }),
-                  n
-                );
+                return (r.getChildContext = function () {
+                  var e;
+                  return ((e = {})[a] = this.emitter), e;
+                }),
+                (r.UNSAFE_componentWillReceiveProps = function (e) {
+                  if (this.props.value !== e.value) {
+                    var n,
+                      r = this.props.value,
+                      o = e.value;
+                    (
+                      (i = r) === (a = o)
+                        ? 0 !== i || 1 / i === 1 / a
+                        : i !== i && a !== a
+                    )
+                      ? (n = 0)
+                      : ((n = 'function' === typeof t ? t(r, o) : c),
+                        0 !== (n |= 0) && this.emitter.set(e.value, n));
+                  }
+                  var i, a;
+                }),
+                (r.render = function () {
+                  return this.props.children;
+                }),
+                n;
               })(r.Component);
             f.childContextTypes = (((n = {})[a] = u.a.object.isRequired), n);
             var p = (function (t) {
@@ -25224,29 +25222,27 @@
               }
               Object(i.a)(n, t);
               var r = n.prototype;
-              return (
-                (r.componentWillReceiveProps = function (e) {
-                  var t = e.observedBits;
-                  this.observedBits = void 0 === t || null === t ? c : t;
-                }),
-                (r.componentDidMount = function () {
-                  this.context[a] && this.context[a].on(this.onUpdate);
-                  var e = this.props.observedBits;
-                  this.observedBits = void 0 === e || null === e ? c : e;
-                }),
-                (r.componentWillUnmount = function () {
-                  this.context[a] && this.context[a].off(this.onUpdate);
-                }),
-                (r.getValue = function () {
-                  return this.context[a] ? this.context[a].get() : e;
-                }),
-                (r.render = function () {
-                  return ((e = this.props.children),
-                  Array.isArray(e) ? e[0] : e)(this.state.value);
-                  var e;
-                }),
-                n
-              );
+              return (r.UNSAFE_componentWillReceiveProps = function (e) {
+                var t = e.observedBits;
+                this.observedBits = void 0 === t || null === t ? c : t;
+              }),
+              (r.componentDidMount = function () {
+                this.context[a] && this.context[a].on(this.onUpdate);
+                var e = this.props.observedBits;
+                this.observedBits = void 0 === e || null === e ? c : e;
+              }),
+              (r.componentWillUnmount = function () {
+                this.context[a] && this.context[a].off(this.onUpdate);
+              }),
+              (r.getValue = function () {
+                return this.context[a] ? this.context[a].get() : e;
+              }),
+              (r.render = function () {
+                return ((e = this.props.children),
+                Array.isArray(e) ? e[0] : e)(this.state.value);
+                var e;
+              }),
+              n;
             })(r.Component);
             return (
               (p.contextTypes = (((o = {})[a] = u.a.object), o)),
@@ -26647,15 +26643,15 @@
           a = null,
           u = null;
         if (
-          ('function' === typeof t.componentWillMount
+          ('function' === typeof t.UNSAFE_componentWillMount
             ? (n = 'componentWillMount')
             : 'function' === typeof t.UNSAFE_componentWillMount &&
               (n = 'UNSAFE_componentWillMount'),
-          'function' === typeof t.componentWillReceiveProps
+          'function' === typeof t.UNSAFE_componentWillReceiveProps
             ? (a = 'componentWillReceiveProps')
             : 'function' === typeof t.UNSAFE_componentWillReceiveProps &&
               (a = 'UNSAFE_componentWillReceiveProps'),
-          'function' === typeof t.componentWillUpdate
+          'function' === typeof t.UNSAFE_componentWillUpdate
             ? (u = 'componentWillUpdate')
             : 'function' === typeof t.UNSAFE_componentWillUpdate &&
               (u = 'UNSAFE_componentWillUpdate'),
@@ -26680,14 +26676,14 @@
         }
         if (
           ('function' === typeof e.getDerivedStateFromProps &&
-            ((t.componentWillMount = r), (t.componentWillReceiveProps = o)),
+            ((t.UNSAFE_componentWillMount = r), (t.UNSAFE_componentWillReceiveProps = o)),
           'function' === typeof t.getSnapshotBeforeUpdate)
         ) {
           if ('function' !== typeof t.componentDidUpdate)
             throw new Error(
               'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
             );
-          t.componentWillUpdate = i;
+          t.UNSAFE_componentWillUpdate = i;
           var s = t.componentDidUpdate;
           t.componentDidUpdate = function (e, t, n) {
             var r = this.__reactInternalSnapshotFlag
@@ -31888,8 +31884,8 @@
       }
       function Ei(e, t, n, r) {
         (e = t.state),
-          'function' === typeof t.componentWillReceiveProps &&
-            t.componentWillReceiveProps(n, r),
+          'function' === typeof t.UNSAFE_componentWillReceiveProps &&
+            t.UNSAFE_componentWillReceiveProps(n, r),
           'function' === typeof t.UNSAFE_componentWillReceiveProps &&
             t.UNSAFE_componentWillReceiveProps(n, r),
           t.state !== e && xi.enqueueReplaceState(t, t.state, null);
@@ -31908,10 +31904,10 @@
           'function' === typeof t.getDerivedStateFromProps ||
             'function' === typeof o.getSnapshotBeforeUpdate ||
             ('function' !== typeof o.UNSAFE_componentWillMount &&
-              'function' !== typeof o.componentWillMount) ||
+              'function' !== typeof o.UNSAFE_componentWillMount) ||
             ((t = o.state),
-            'function' === typeof o.componentWillMount &&
-              o.componentWillMount(),
+            'function' === typeof o.UNSAFE_componentWillMount &&
+              o.UNSAFE_componentWillMount(),
             'function' === typeof o.UNSAFE_componentWillMount &&
               o.UNSAFE_componentWillMount(),
             t !== o.state && xi.enqueueReplaceState(o, o.state, null),
@@ -33020,7 +33016,7 @@
               'function' === typeof a.getSnapshotBeforeUpdate;
           f ||
             ('function' !== typeof a.UNSAFE_componentWillReceiveProps &&
-              'function' !== typeof a.componentWillReceiveProps) ||
+              'function' !== typeof a.UNSAFE_componentWillReceiveProps) ||
             ((u !== r || c !== l) && Ei(t, a, r, l)),
             (li = !1);
           var p = t.memoizedState;
@@ -33033,9 +33029,9 @@
                 (u = li || wi(t, n, u, r, p, c, l))
                   ? (f ||
                       ('function' !== typeof a.UNSAFE_componentWillMount &&
-                        'function' !== typeof a.componentWillMount) ||
-                      ('function' === typeof a.componentWillMount &&
-                        a.componentWillMount(),
+                        'function' !== typeof a.UNSAFE_componentWillMount) ||
+                      ('function' === typeof a.UNSAFE_componentWillMount &&
+                        a.UNSAFE_componentWillMount(),
                       'function' === typeof a.UNSAFE_componentWillMount &&
                         a.UNSAFE_componentWillMount()),
                     'function' === typeof a.componentDidMount &&
@@ -33064,7 +33060,7 @@
               'function' === typeof (s = n.getDerivedStateFromProps) ||
               'function' === typeof a.getSnapshotBeforeUpdate) ||
               ('function' !== typeof a.UNSAFE_componentWillReceiveProps &&
-                'function' !== typeof a.componentWillReceiveProps) ||
+                'function' !== typeof a.UNSAFE_componentWillReceiveProps) ||
               ((u !== r || c !== l) && Ei(t, a, r, l)),
             (li = !1),
             (c = t.memoizedState),
@@ -33077,9 +33073,9 @@
                 (s = li || wi(t, n, u, r, c, p, l))
                   ? (f ||
                       ('function' !== typeof a.UNSAFE_componentWillUpdate &&
-                        'function' !== typeof a.componentWillUpdate) ||
-                      ('function' === typeof a.componentWillUpdate &&
-                        a.componentWillUpdate(r, p, l),
+                        'function' !== typeof a.UNSAFE_componentWillUpdate) ||
+                      ('function' === typeof a.UNSAFE_componentWillUpdate &&
+                        a.UNSAFE_componentWillUpdate(r, p, l),
                       'function' === typeof a.UNSAFE_componentWillUpdate &&
                         a.UNSAFE_componentWillUpdate(r, p, l)),
                     'function' === typeof a.componentDidUpdate &&

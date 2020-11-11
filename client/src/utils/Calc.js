@@ -51,3 +51,21 @@ export const CalcMax = ({ setWeights }) => {
   });
   return highestMax;
 };
+
+export const CalcRange = ({ setWeights }) => {
+  let returnArr = [];
+  let highest = setWeights[0].weight;
+  let lowest = setWeights[0].weight;
+  setWeights.forEach((set, index) => 
+  {
+    if (set.weight > highest) {
+      highest = set.weight
+    }
+    if (set.weight < lowest) {
+      lowest = set.weight
+    }
+  })
+  returnArr.push(lowest);
+  returnArr.push(highest)
+  return returnArr
+}

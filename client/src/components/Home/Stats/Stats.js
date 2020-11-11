@@ -10,12 +10,10 @@ import {
   Tooltip,
   Legend,
   BarChart,
-  CartesianGrid,
   Bar,
 } from 'recharts';
 
 function Stats(props) {
-  const [toggleChart, setToggleChart] = React.useState(false)
 
   React.useEffect(() => {}, [props.data]);
 
@@ -44,22 +42,46 @@ function Stats(props) {
     <div className={setContainerClass()}>
       {props.data.join() !== '' && props.checkData ? (
         <div className='row'>
+          
           <button 
           className="toggleCharts" 
-          onClick={() => setToggleChart(toggleChart ? false : true)}>
-            {toggleChart ? "Line Chart" : "Range Chart"}
+          onClick={() => props.handleToggleChart()}>
+            {props.toggleChart ? "Line Chart" : "Range Chart"}
           </button>
-          {toggleChart ? 
+
+          {props.toggleChart ? 
             (
-              <ResponsiveContainer className='col-12' width='100%' height={200} data={props.data}>
-                <BarChart>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="pv" fill="#8884d8" />
-                  <Bar dataKey="uv" fill="#82ca9d" />
+              <ResponsiveContainer className='col-12' width='100%' height={200}>
+                <BarChart className='chart' data={props.data}>
+                  <XAxis                     
+                    dataKey='name'
+                    tickFormatter={formatXAxis}
+                    stroke='#3f51b5' />
+                  <YAxis
+                    width={28}
+                    stroke='#3f51b5' />
+                  <Tooltip 
+                  cursor={false} />
+                  <Legend
+                    width={60}
+                    verticalAlign='top'
+                    wrapperStyle={{
+                      top: 0,
+                      right: 0,
+                      backgroundColor: '#d9d9d9',
+                      border: '1px solid #3f51b5',
+                      borderRadius: 3,
+                      lineHeight: '30px',
+                      color: '#3f51b5',
+                      width: 'auto',
+                      padding: '2px'
+                    }} />
+                  <Bar 
+                    dataKey="uv" 
+                    fill="#3f51b5" 
+                    type='monotone' 
+                    stroke='#3f51b5' 
+                    name='Range'  />
                 </BarChart>
               </ResponsiveContainer>
             )
