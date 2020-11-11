@@ -122,13 +122,6 @@ function Workout(props) {
 
   return (
     <div className='row workoutContainer'>
-      <button
-        className='clearBtn'
-        onClick={() => {
-          handleClear();
-        }}>
-        Clear
-      </button>
       <div className='workoutHeader'>Workout</div>
       {workoutUUID === '' ? (
         <div className='row openingContainer'>
@@ -151,6 +144,13 @@ function Workout(props) {
         </div>
       ) : (
         <div className='row content'>
+        <button
+          className='clearBtn'
+          onClick={() => {
+            handleClear();
+          }}>
+          Clear
+        </button>
           <div className='row section'>
             <div className='col-12 sectionHeader'>Exercise:</div>
             <select
