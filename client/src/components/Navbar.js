@@ -14,14 +14,14 @@ import API from '../utils/API';
 
 import Stopwatch from './Timer/Stopwatch';
 import CreateExercise from './CreateExercise/CreateExercise';
-import Workout from './AddWorkout/Workout';
+import Workout from './Workout/Workout';
 import Estimate from './Estimate/Estimate';
-import Home from './Home/Home';
+import Dash from './Dash/Dash';
 
 const tabs = [
+  { name: 'Workout' },
   { name: 'Stopwatch' },
   { name: 'Create' },
-  { name: 'Workout' },
   { name: 'Estimate' },
 ];
 
@@ -110,7 +110,7 @@ function Navbar(props) {
           <i className='fa fa-caret-left left'></i>
           <nav className='nav'>
             <ul className='navList'>
-              <li key={0} id='home' className='navItem'>
+              <li key={0} id='dash' className='navItem'>
                 <NavLink
                   exact
                   to='/'
@@ -119,7 +119,7 @@ function Navbar(props) {
                     color: '#3f51b5',
                   }}
                   className='link'>
-                  Home
+                  Dash
                 </NavLink>
               </li>
               {/* Creates li elements for each page */}
@@ -163,7 +163,7 @@ function Navbar(props) {
               <Estimate />
             </Route>
             <Route path='/' key='0'>
-              <Home listOfExercises={listOfExercises} />
+              <Dash listOfExercises={listOfExercises} />
             </Route>
           </Switch>
         </div>

@@ -56,6 +56,12 @@ function Workout(props) {
       .catch(err => alert('no previous workout'));
   };
 
+  const handleClear = () => {
+    localStorage.clear();
+    $(':input').val('');
+    setWorkoutUUID('');
+  }
+
   const handleStartNewWorkout = () => {
     API.startWorkout().then(res => {
       setWorkoutUUID(res.data.workout_id);
@@ -116,6 +122,13 @@ function Workout(props) {
 
   return (
     <div className='row workoutContainer'>
+      <button
+        className='clearBtn'
+        onClick={() => {
+          handleClear();
+        }}>
+        Clear
+      </button>
       <div className='workoutHeader'>Workout</div>
       {workoutUUID === '' ? (
         <div className='row openingContainer'>

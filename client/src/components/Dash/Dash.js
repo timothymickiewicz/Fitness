@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import './Dash.css';
 
 import API from '../../utils/API';
 import { CalcMax, CalcRange } from '../../utils/Calc';
