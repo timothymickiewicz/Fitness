@@ -77,17 +77,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+        "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "./src/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "eslint src/*.js --fix-dry-run"
-    ],
-    "./*{js,jsx,ts,tsx,md}": [
-      "npx prettier --write",
-      "eslint src/*.js --fix-dry-run"
+    "./src/**/**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write"
     ]
   },
   "heroku-run-build-script": true
