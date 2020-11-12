@@ -21,8 +21,8 @@ import Dash from './Dash/Dash';
 const tabs = [
   { name: 'Workout' },
   { name: 'Stopwatch' },
-  { name: 'Create' },
-  { name: 'Estimate' }
+  { name: 'Create' }
+  // { name: 'Estimate' }
 ];
 
 function Navbar(props) {
@@ -159,9 +159,9 @@ function Navbar(props) {
             <Route path={'/Workout'} key="3">
               <Workout listOfExercises={listOfExercises} />
             </Route>
-            <Route path={'/Estimate'} key="4">
+            {/* <Route path={'/Estimate'} key="4">
               <Estimate />
-            </Route>
+            </Route> */}
             <Route path="/" key="0">
               <Dash listOfExercises={listOfExercises} />
             </Route>
