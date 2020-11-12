@@ -9,32 +9,32 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: function () {
         return uuidv4();
-      },
+      }
     },
     exerciseName: {
       type: DataTypes.STRING,
       allowNull: false,
-      is: ['^[a-z]+$', 'i'], // will only allow letters
+      is: ['^[a-z]+$', 'i'] // will only allow letters
     },
     exerciseType: {
       type: DataTypes.STRING,
       allowNull: false,
-      is: ['^[a-z]+$', 'i'], // will only allow letters
+      is: ['^[a-z]+$', 'i'] // will only allow letters
     },
     numOfSets: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      not: ['[a-z]', 'i'], // will not allow letters
+      not: ['[a-z]', 'i'] // will not allow letters
     },
     breakDuration: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      not: ['[a-z]', 'i'], // will not allow letters
+      not: ['[a-z]', 'i'] // will not allow letters
     },
     setWeights: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   });
 
   return WorkoutExercises;

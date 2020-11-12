@@ -16,7 +16,7 @@ const icons = [
   { icon: Legs, name: 'Legs' },
   { icon: Back, name: 'Back' },
   { icon: Abs, name: 'Abs' },
-  { icon: Cardio, name: 'Cardio' },
+  { icon: Cardio, name: 'Cardio' }
 ];
 
 function CreateExercise(props) {
@@ -27,17 +27,17 @@ function CreateExercise(props) {
   };
 
   return !selection ? (
-    <div className='exerciseContainer row'>
+    <div className="exerciseContainer row">
       {icons.map((key, index) => {
         return (
           <button
             key={index}
-            className='iconWrap'
-            type='submit'
+            className="iconWrap"
+            type="submit"
             onClick={() => setSelection(key.name)}>
             <img
               id={key.name}
-              className='iconItem'
+              className="iconItem"
               src={key.icon}
               alt={'type of workout is' + key.name}></img>
           </button>

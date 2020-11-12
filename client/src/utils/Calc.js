@@ -28,7 +28,7 @@ let maxCalcNums = [
   { reps: 27, percent: 0.53 },
   { reps: 28, percent: 0.52 },
   { reps: 29, percent: 0.51 },
-  { reps: 30, percent: 0.5 },
+  { reps: 30, percent: 0.5 }
 ];
 // divide rep weight number by percent to get 1rm
 
@@ -56,16 +56,15 @@ export const CalcRange = ({ setWeights }) => {
   let returnArr = [];
   let highest = setWeights[0].weight;
   let lowest = setWeights[0].weight;
-  setWeights.forEach((set, index) => 
-  {
+  setWeights.forEach((set, index) => {
     if (set.weight > highest) {
-      highest = set.weight
+      highest = set.weight;
     }
     if (set.weight < lowest) {
-      lowest = set.weight
+      lowest = set.weight;
     }
-  })
+  });
   returnArr.push(lowest);
-  returnArr.push(highest)
-  return returnArr
-}
+  returnArr.push(highest);
+  return returnArr;
+};

@@ -5,19 +5,19 @@ import LapTime from './LapTime';
 
 class LapTimeList extends Component {
   static defaultProps = {
-    timeList: [],
+    timeList: []
   };
 
   render() {
     const { timeList } = this.props;
 
     return (
-      <div className='LapTimeList'>
-        <div className='LapTimeList__listwrap'>
-          <div className='LapTimeList__headers'>
+      <div className="LapTimeList">
+        <div className="LapTimeList__listwrap">
+          <div className="LapTimeList__headers">
             <span> Lap </span> <span> Time </span>
           </div>
-          <ul className='LapTimeList__list'>
+          <ul className="LapTimeList__list">
             {timeList.map((time, index) => {
               return (
                 <li key={index}>

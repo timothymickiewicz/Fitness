@@ -17,35 +17,36 @@ function Home(props) {
 
   React.useEffect(() => {}, [props.listOfExercises]);
 
-  const setLineChartDataOnRes = resData => {
-    let lineReturnArr = [], barReturnArr= [];
+  const setLineChartDataOnRes = (resData) => {
+    let lineReturnArr = [],
+      barReturnArr = [];
     resData.forEach((set, index) => {
       let iterableSets = JSON.parse(`[${set.setWeights.replace(/,\s*$/, '')}]`);
       barReturnArr.push({
         name: set.createdAt,
-        uv: CalcRange({ setWeights: iterableSets }),
-      })
-    })
+        uv: CalcRange({ setWeights: iterableSets })
+      });
+    });
     setBarChartData(barReturnArr);
     resData.forEach((set, index) => {
       let iterableSets = JSON.parse(`[${set.setWeights.replace(/,\s*$/, '')}]`);
       lineReturnArr.push({
         name: set.createdAt,
-        uv: CalcMax({ setWeights: iterableSets }).toFixed(0),
+        uv: CalcMax({ setWeights: iterableSets }).toFixed(0)
       });
     });
     setLineChartData(lineReturnArr);
   };
 
   const handleToggleChart = () => {
-    toggleChart ? setToggleChart(false) : setToggleChart(true)
-  }
+    toggleChart ? setToggleChart(false) : setToggleChart(true);
+  };
 
-  const getChartData = val => {
+  const getChartData = (val) => {
     API.getAllByYear({
-      exerciseName: val,
+      exerciseName: val
     })
-      .then(res => {
+      .then((res) => {
         Object.keys(res.data).length === 0
           ? setCheckForData(false)
           : setCheckForData(true);
@@ -53,15 +54,20 @@ function Home(props) {
         setData(res.data);
         setLineChartDataOnRes(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
 
   return (
-    <div className='row homeContainer'>
+    <div className="row homeContainer">
       <Search setChart={getChartData} listOfExercises={props.listOfExercises} />
-      <Stats handleToggleChart={handleToggleChart} checkData={checkForData} toggleChart={toggleChart} data={(toggleChart ? barChartData : lineChartData)} />
+      <Stats
+        handleToggleChart={handleToggleChart}
+        checkData={checkForData}
+        toggleChart={toggleChart}
+        data={toggleChart ? barChartData : lineChartData}
+      />
       <CalcPlates />
     </div>
   );

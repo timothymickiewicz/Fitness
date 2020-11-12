@@ -24,7 +24,7 @@ class Stopwatch extends Component {
 
   render() {
     return (
-      <div className='Stopwatch'>
+      <div className="Stopwatch">
         <Timer time={this.props.currentTime} />
 
         <Controls

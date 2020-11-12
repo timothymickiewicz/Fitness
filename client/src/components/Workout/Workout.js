@@ -34,22 +34,22 @@ function Workout(props) {
 
   const handleGetLastWorkout = () => {
     API.getLastWorkout()
-      .then(res => {
+      .then((res) => {
         setWorkoutUUID(res.data.workout_id);
         localStorage.setItem('workoutUUID', res.data.workout_id);
       })
       // replace this with alert
-      .catch(err => $("#continue").text("No Previous Workouts"));
+      .catch((err) => $('#continue').text('No Previous Workouts'));
   };
 
   const handleClear = () => {
     localStorage.clear();
     $(':input').val('');
     setWorkoutUUID('');
-  }
+  };
 
   const handleStartNewWorkout = () => {
-    API.startWorkout().then(res => {
+    API.startWorkout().then((res) => {
       setWorkoutUUID(res.data.workout_id);
       localStorage.setItem('workoutUUID', res.data.workout_id);
     });
@@ -70,8 +70,8 @@ function Workout(props) {
       numOfSets: JSON.parse(localStorage.getItem('sets')),
       breakDuration: JSON.parse(localStorage.getItem('duration')),
       setWeights: setWeights,
-      WorkoutWorkoutId: localStorage.getItem('workoutUUID'),
-    }).then(res => {
+      WorkoutWorkoutId: localStorage.getItem('workoutUUID')
+    }).then((res) => {
       handleClear();
     });
   };
@@ -81,13 +81,13 @@ function Workout(props) {
     let setsField = [];
     for (let i = 1; i <= sets; i++) {
       setsField.push(
-        <div key={i} className='setsField'>
-          <div className='subSetsField'>
-            <span className='subSetsFieldText'>Set {i} Weight: </span>
+        <div key={i} className="setsField">
+          <div className="subSetsField">
+            <span className="subSetsFieldText">Set {i} Weight: </span>
             <input
               id={'setsFieldWeight' + i}
-              className='inputBoxSetsField'
-              placeholder='Enter as lbs'
+              className="inputBoxSetsField"
+              placeholder="Enter as lbs"
               onChange={(e) => {
                 if (localStorage.getItem(`setsFieldWeight${i}`)) {
                   localStorage.removeItem(`setsFieldWeight${i}`);
@@ -98,11 +98,11 @@ function Workout(props) {
                 );
               }}></input>
           </div>
-          <div className='subSetsField'>
-            <span className='subSetsFieldText'>Set {i} Reps: </span>
+          <div className="subSetsField">
+            <span className="subSetsFieldText">Set {i} Reps: </span>
             <input
               id={'setsFieldReps' + i}
-              className='inputBoxSetsField'
+              className="inputBoxSetsField"
               onChange={(e) => {
                 if (localStorage.getItem(`setsFieldReps${i}`)) {
                   localStorage.removeItem(`setsFieldReps${i}`);
@@ -120,21 +120,21 @@ function Workout(props) {
   };
 
   return (
-    <div className='row workoutContainer'>
-      <div className='workoutHeader'>Workout</div>
+    <div className="row workoutContainer">
+      <div className="workoutHeader">Workout</div>
       {workoutUUID === '' ? (
-        <div className='row openingContainer'>
+        <div className="row openingContainer">
           <button
-            id='continue'
-            className='introBtn'
+            id="continue"
+            className="introBtn"
             onClick={() => {
               handleGetLastWorkout();
             }}>
             Continue
           </button>
           <button
-            id='new'
-            className='introBtn'
+            id="new"
+            className="introBtn"
             onClick={() => {
               handleStartNewWorkout();
             }}>
@@ -142,18 +142,18 @@ function Workout(props) {
           </button>
         </div>
       ) : (
-        <div className='row content'>
-        <button
-          className='clearBtn'
-          onClick={() => {
-            handleClear();
-          }}>
-          Clear
-        </button>
-          <div className='row section'>
-            <div className='col-12 sectionHeader'>Exercise:</div>
+        <div className="row content">
+          <button
+            className="clearBtn"
+            onClick={() => {
+              handleClear();
+            }}>
+            Clear
+          </button>
+          <div className="row section">
+            <div className="col-12 sectionHeader">Exercise:</div>
             <select
-              onChange={e => {
+              onChange={(e) => {
                 if (localStorage.getItem('exercise')) {
                   localStorage.removeItem('exercise');
                 }
@@ -166,13 +166,13 @@ function Workout(props) {
                   e.target.options[e.target.selectedIndex].dataset.type
                 );
               }}
-              name='exercises'
-              id='exercises'>
+              name="exercises"
+              id="exercises">
               <option
                 key={0}
                 data-type={'empty'}
-                value=''
-                defaultValue=''
+                value=""
+                defaultValue=""
                 disabled
                 selected>
                 Select an Option
@@ -180,46 +180,49 @@ function Workout(props) {
               {props.listOfExercises.join() !== '' ? (
                 props.listOfExercises.map((key, index) => {
                   return (
-                    <option key={index + 1} data-type={key.type} value={key.name}>
+                    <option
+                      key={index + 1}
+                      data-type={key.type}
+                      value={key.name}>
                       {key.name}
                     </option>
                   );
                 })
               ) : (
                 <option
-                  id='exercises'
+                  id="exercises"
                   key={1000}
                   disabled={true}
-                  value='No Workouts Created'>
+                  value="No Workouts Created">
                   No Workouts Created
                 </option>
               )}
             </select>
           </div>
-          <div className='row section'>
-            <div className='col-12 sectionHeader'>Sets:</div>
+          <div className="row section">
+            <div className="col-12 sectionHeader">Sets:</div>
             <input
-              id='setSets'
-              onChange={e => {
+              id="setSets"
+              onChange={(e) => {
                 if (localStorage.getItem('sets')) {
                   localStorage.removeItem('sets');
                 }
                 localStorage.setItem('sets', JSON.stringify(e.target.value));
                 setSets(e.target.value);
               }}
-              className='inputBox'></input>
+              className="inputBox"></input>
 
             {/* Sets field generates here */}
             {sets !== 0 ? (
-              <div className='setsFieldContainer'>{calcSetFields()}</div>
+              <div className="setsFieldContainer">{calcSetFields()}</div>
             ) : null}
           </div>
-          <div className='row section'>
-            <div className='col-12 sectionHeader'>Break Duration:</div>
+          <div className="row section">
+            <div className="col-12 sectionHeader">Break Duration:</div>
             <input
-              id='breakDuration'
-              placeholder='seconds'
-              onChange={e => {
+              id="breakDuration"
+              placeholder="seconds"
+              onChange={(e) => {
                 if (localStorage.getItem('duration')) {
                   localStorage.removeItem('duration');
                 }
@@ -228,10 +231,10 @@ function Workout(props) {
                   JSON.stringify(e.target.value)
                 );
               }}
-              className='inputBox'></input>
+              className="inputBox"></input>
           </div>
           <button
-            className='submitWorkout'
+            className="submitWorkout"
             onClick={() => {
               handleSubmitWorkout();
             }}>

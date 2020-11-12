@@ -8,16 +8,16 @@ import API from '../../utils/API';
 function Selection(props) {
   const [exerciseName, setExerciseName] = React.useState('');
 
-  const handlePostNewExercise = value => {
+  const handlePostNewExercise = (value) => {
     API.createNewExercise({
       exerciseName: exerciseName,
-      exerciseType: props.type,
+      exerciseType: props.type
     })
-      .then(res => {
+      .then((res) => {
         props.getList();
         console.log(res);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const handleBack = () => {
@@ -25,20 +25,20 @@ function Selection(props) {
   };
 
   return props.type ? (
-    <div className='row selectionContainer'>
-      <button className='backBtn' onClick={handleBack}>
+    <div className="row selectionContainer">
+      <button className="backBtn" onClick={handleBack}>
         Back
       </button>
-      <div className='col-12 selectionHeader'>{props.type}</div>
-      <div className='row selectionContent'>
-        <div className='col-12 selectionSectionHeader'>Exercise:</div>
+      <div className="col-12 selectionHeader">{props.type}</div>
+      <div className="row selectionContent">
+        <div className="col-12 selectionSectionHeader">Exercise:</div>
         <input
-          className='selectionInputBox'
-          onChange={e => setExerciseName(e.target.value)}></input>
+          className="selectionInputBox"
+          onChange={(e) => setExerciseName(e.target.value)}></input>
       </div>
-      <hr className='break'></hr>
+      <hr className="break"></hr>
       <button
-        className='submitExercise'
+        className="submitExercise"
         onClick={() => {
           handlePostNewExercise();
           $('.selectionInputBox').val('');

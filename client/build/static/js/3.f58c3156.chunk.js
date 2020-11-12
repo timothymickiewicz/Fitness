@@ -35,7 +35,7 @@
             delta: 0,
             entries: [],
             id: r(),
-            isFinal: !1,
+            isFinal: !1
           };
         },
         u = function (t, n) {
@@ -109,7 +109,7 @@
             {
               get timeStamp() {
                 return i;
-              },
+              }
             }
           );
         },
@@ -156,8 +156,8 @@
                       target: i.target,
                       cancelable: i.cancelable,
                       startTime: i.timeStamp,
-                      processingStart: i.timeStamp + t,
-                    },
+                      processingStart: i.timeStamp + t
+                    }
                   ]),
                   r());
               });
@@ -170,7 +170,7 @@
                   addEventListener(n, t, {
                     once: !0,
                     passive: !0,
-                    capture: !0,
+                    capture: !0
                   });
                 });
               })),
@@ -224,7 +224,7 @@
               ? setTimeout(n, 0)
               : addEventListener('pageshow', n);
         };
-    },
-  },
+    }
+  }
 ]);
 //# sourceMappingURL=3.f58c3156.chunk.js.map

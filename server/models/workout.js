@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       primaryKey: true,
       defaultValue: function () {
         return uuidv4();
-      },
+      }
     },
     workout: {
       type: DataTypes.DATE,
@@ -19,8 +19,8 @@ module.exports = function (sequelize, DataTypes) {
         date.setDate(date.getDate() - 1);
         date.setTime(date.getTime() + 19 * 60 * 60 * 1000);
         return date;
-      },
-    },
+      }
+    }
   });
 
   return Workout;

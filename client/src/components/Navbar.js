@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
+  NavLink
 } from 'react-router-dom';
 import './Navbar.css';
 
@@ -22,7 +22,7 @@ const tabs = [
   { name: 'Workout' },
   { name: 'Stopwatch' },
   { name: 'Create' },
-  { name: 'Estimate' },
+  { name: 'Estimate' }
 ];
 
 function Navbar(props) {
@@ -58,7 +58,7 @@ function Navbar(props) {
   };
 
   // Adds laps to the Stopwatch laps list
-  const handleSetLapsList = lapTime => {
+  const handleSetLapsList = (lapTime) => {
     setLapsList([...lapsList, lapTime]);
   };
 
@@ -77,17 +77,17 @@ function Navbar(props) {
   //   Populates the dropdown
   const getList = () => {
     API.getListOfExercises()
-      .then(res => {
+      .then((res) => {
         let compactRes = [];
         res.data.map((key, index) => {
           return compactRes.push({
             name: key.exerciseName,
-            type: key.exerciseType,
+            type: key.exerciseType
           });
         });
         setListOfExercises(compactRes);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   React.useEffect(() => {
@@ -95,7 +95,7 @@ function Navbar(props) {
     // Keeps timer running as long as the toggle is true, allows continuous runtime after Stopwatch unmounts
     if (isTimerRunning) {
       timeRef.current = window.setInterval(() => {
-        setTimer(time => time + Config.updateInterval);
+        setTimer((time) => time + Config.updateInterval);
       }, Config.updateInterval);
     }
     return clearInterval;
@@ -104,36 +104,36 @@ function Navbar(props) {
   return (
     <Router>
       {checkSetScrollArrows()}
-      <div className='row'>
-        <div className='container col-12'>
-          <i className='fa fa-caret-right right'></i>
-          <i className='fa fa-caret-left left'></i>
-          <nav className='nav'>
-            <ul className='navList'>
-              <li key={0} id='dash' className='navItem'>
+      <div className="row">
+        <div className="container col-12">
+          <i className="fa fa-caret-right right"></i>
+          <i className="fa fa-caret-left left"></i>
+          <nav className="nav">
+            <ul className="navList">
+              <li key={0} id="dash" className="navItem">
                 <NavLink
                   exact
-                  to='/'
+                  to="/"
                   activeStyle={{
                     fontWeight: 'bold',
-                    color: '#3f51b5',
+                    color: '#3f51b5'
                   }}
-                  className='link'>
+                  className="link">
                   Dashboard
                 </NavLink>
               </li>
               {/* Creates li elements for each page */}
               {tabs.map((key, index) => {
                 return (
-                  <li key={index} id={key.name} className='navItem'>
+                  <li key={index} id={key.name} className="navItem">
                     <NavLink
                       exact
                       to={'/' + key.name}
                       activeStyle={{
                         fontWeight: 'bold',
-                        color: '#3f51b5',
+                        color: '#3f51b5'
                       }}
-                      className='link'>
+                      className="link">
                       {key.name}
                     </NavLink>
                   </li>
@@ -143,7 +143,7 @@ function Navbar(props) {
           </nav>
           <Switch>
             {/* Creates routes to each page matching the li element that is clicked on */}
-            <Route path={'/Stopwatch'} key='1'>
+            <Route path={'/Stopwatch'} key="1">
               <Stopwatch
                 isTimerRunning={isTimerRunning}
                 currentTime={time}
@@ -153,16 +153,16 @@ function Navbar(props) {
                 handleSetLapsList={handleSetLapsList}
               />
             </Route>
-            <Route path={'/Create'} key='2'>
+            <Route path={'/Create'} key="2">
               <CreateExercise getList={getList} />
             </Route>
-            <Route path={'/Workout'} key='3'>
+            <Route path={'/Workout'} key="3">
               <Workout listOfExercises={listOfExercises} />
             </Route>
-            <Route path={'/Estimate'} key='4'>
+            <Route path={'/Estimate'} key="4">
               <Estimate />
             </Route>
-            <Route path='/' key='0'>
+            <Route path="/" key="0">
               <Dash listOfExercises={listOfExercises} />
             </Route>
           </Switch>

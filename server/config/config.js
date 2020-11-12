@@ -7,7 +7,7 @@ module.exports = {
     database: 'workout',
     host: 'localhost',
     port: 3306,
-    dialect: 'mysql',
+    dialect: 'mysql'
   },
   test: {
     username: 'root',
@@ -15,7 +15,7 @@ module.exports = {
     database: 'database_test',
     host: '127.0.0.1',
     port: 3306,
-    dialect: 'mysql',
+    dialect: 'mysql'
   },
   production: {
     username: 'd67z5x89iadd80kj',
@@ -23,6 +23,6 @@ module.exports = {
     database: 't4dqp5qfl1l29bw1',
     host: 'z8dl7f9kwf2g82re.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     port: 3306,
-    dialect: 'mysql',
-  },
+    dialect: 'mysql'
+  }
 };

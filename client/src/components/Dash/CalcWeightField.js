@@ -9,10 +9,10 @@ function CalcWeightField(props) {
     { name: '10', weight: 0 },
     { name: '5', weight: 0 },
     { name: '2.5', weight: 0 },
-    { name: 'Remainder', weight: 0 },
+    { name: 'Remainder', weight: 0 }
   ]);
 
-  const calculateWeights = value => {
+  const calculateWeights = (value) => {
     let fortyFives = 0;
     let thirtyFives = 0;
     let twentyFives = 0;
@@ -65,7 +65,7 @@ function CalcWeightField(props) {
       { name: '10', weight: tens },
       { name: '5', weight: fives },
       { name: '2.5', weight: twoPointFives },
-      { name: 'Remainder', weight: remainder },
+      { name: 'Remainder', weight: remainder }
     ]);
   };
 
@@ -74,9 +74,9 @@ function CalcWeightField(props) {
   }, [props.weight]);
 
   return (
-    <div className='row weightCalcContainer'>
+    <div className="row weightCalcContainer">
       {props.error ? (
-        <div className='row error'>
+        <div className="row error">
           "Weight in lbs must be greater than 45.
           <br></br>
           (The barbell is included in total weight)"
@@ -84,7 +84,7 @@ function CalcWeightField(props) {
       ) : (
         calcWeights.map((key, index) => {
           return (
-            <div key={index} className='weightSlot'>
+            <div key={index} className="weightSlot">
               {key.name} = {key.weight}
             </div>
           );

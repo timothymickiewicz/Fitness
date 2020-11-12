@@ -5,13 +5,13 @@ import timeFormat from '../../utils/timeFormat';
 
 class Timer extends Component {
   static defaultProps = {
-    time: 0,
+    time: 0
   };
 
   render() {
     const { time } = this.props;
 
-    return <div className='Timer'>{timeFormat(time)}</div>;
+    return <div className="Timer">{timeFormat(time)}</div>;
   }
 }
 

@@ -27,7 +27,7 @@ const API = {
   // },
   getAllByYear: function (exerciseName) {
     return axios.post('/api/data/year', exerciseName);
-  },
+  }
 };
 
 export default API;

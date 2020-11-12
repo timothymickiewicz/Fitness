@@ -4,24 +4,24 @@ import './Search.css';
 function Search(props) {
   React.useEffect(() => {});
 
-  const handleSetQuery = val => {
+  const handleSetQuery = (val) => {
     props.setChart(val);
   };
 
   return (
-    <div className='row searchContainer'>
-      <div className='col-12 chartHeader'>See the Growth</div>
+    <div className="row searchContainer">
+      <div className="col-12 chartHeader">See the Growth</div>
       <select
-        onChange={e => {
+        onChange={(e) => {
           handleSetQuery(e.target.value);
         }}
-        name='exerciseList'
-        id='exerciseList'>
+        name="exerciseList"
+        id="exerciseList">
         <option
           key={0}
           data-type={'empty'}
-          value=''
-          defaultValue=''
+          value=""
+          defaultValue=""
           selected
           disabled={true}>
           Select an Option
@@ -36,10 +36,10 @@ function Search(props) {
           })
         ) : (
           <option
-            id='exercises'
+            id="exercises"
             key={1000}
             disabled={true}
-            value='No Workouts Created'>
+            value="No Workouts Created">
             No Workouts Created
           </option>
         )}
