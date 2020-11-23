@@ -22,9 +22,6 @@ const API = {
   getListOfExercises: function () {
     return axios.get('/api/storedExercises/exercises');
   },
-  // addSetWeights: function (setWeights) {
-  //   return axios.post('/api/sets/setWeights', setWeights);
-  // },
   getAllByYear: function (exerciseName) {
     return axios.post('/api/data/year', exerciseName);
   }

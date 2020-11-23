@@ -11,7 +11,7 @@ function Workout(props) {
   //   Used to generate sets fields dynamically
   const [sets, setSets] = React.useState(0);
   //   Template literals the sets and their associated weights
-  let [setWeights, setSetWeights] = React.useState('');
+  const [setWeights, setSetWeights] = React.useState('');
 
   React.useEffect(() => {
     setSets(JSON.parse(localStorage.getItem('sets')));

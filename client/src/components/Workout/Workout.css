@@ -15,6 +15,7 @@
 
 .workoutContainer {
   height: auto;
+  margin-bottom: 3vh;
   width: 100vw;
   position: relative;
 }
